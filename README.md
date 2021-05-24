@@ -37,17 +37,17 @@ Important notice: Only Chromium based Edge browsers are supported. Screen sharin
 ## Quick start guide
 1. Load the client library (doesn’t have to be loaded in head).
 ```html
-<script src="https://cdn.talaria.solutions/client/v1/sylrtc-client.js"></script>
+<script src="https://cdn.talaria.solutions/client/v1/tlr-client.js"></script>
 ```
 
 <br>
 
 
-2. When the document is ready, configure client, set presence listener and connect to SeeYouLink RTC signaling server.
+2. When the document is ready, configure client, set presence listener and connect to Talaria RTC signaling server.
 
 ```javascript
-// configure sylrtc_client, only required options set
-sylrtc.init({  
+// configure tlr_client, only required options set
+tlr.init({  
    user: {
      // required, user id in your application, or any other unique id
     id: '0001', // integer or string
@@ -62,7 +62,7 @@ sylrtc.init({
 });
 
 // connect to rtc server
-sylrtc.connect();
+tlr.connect();
 ```
 
 <br>
@@ -75,7 +75,7 @@ sylrtc.connect();
 ``` javascript
 $('.contact).on('click', () => {
   const username = $(this).attr('data-username');
-  sylrtc.performCall(username);
+  tlr.performCall(username);
 });
 ```
 
@@ -88,7 +88,7 @@ $('.contact).on('click', () => {
 ```
 
 ``` javascript
-sylrtc.on('onlinepresencechanged', (onlineUsers) => {
+tlr.on('onlinepresencechanged', (onlineUsers) => {
   // onlineUsers is an array of users that are currently online, e.g.
   // [{
   //   username: 'rs-1234-John Doe', 
