@@ -1,0 +1,302 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <title>Talaria Demo</title>
+  <meta name="description" content="Talaria Demo">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">  
+  
+  <link rel="icon" type="image/png" sizes="64x64"  href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABBVJREFUeNrsW01oE0EUno0Fgz0YkaIoSKIgKmLSQ0EvbXKsl1YQWi8mOXoqvXlKSM5K6KnHJKdSKCS52IuQtB4sWMhGMFYRjYJ/lNJ4qEQo6Lw4xc1kNvuT7O5M1gePDdNms++b7/3NzkjIYknMbYbxBTSI1Y81pPEVGWsDaw1rJb06WbHy+SQLDPbhyyzWGXIdhBSxluCKAWlyCQA2HGZ2AWvMYlLlsOYHxQxpQBRPEprbKQBAql8gpD6pnrFhxvUwYtGsa0gmjQffzmL1IT4EjI9jEIqWA4CNz3Iw66pswCDELQGAUL6sI405LZBGI3pdQhoy4w2DIOk0/gNH/m4kLoxjEBq9/smjc+ZFMx6RZy4QG8wBIBjtWRIiNhh3AVa0P+sfRd4TI9xb3aj/0J0dpB55vkCPxxM3kP/aSe4BqKx9QuW1j/TwHVad4FHx+6zAtEfhuxfQlYnT9HCWFQ9YMSAjaNDrnO4Hl5FvzEsHxUxPAEhjEzPgW9wKxCoAgZIYsVGVAcleN93fbQnFAohXoakzqJeNHsbKjarsbO+h1s9DoUCYjl5E3tGOzBUmaxddDIhq3ax1cIi2nnwRCgBwhVvT5+nhhQ4ASHTU1eFBehEpFoDcvH2OFQt8SgYYWrtbeVxH8sZ3oVjAiAWzSgBmjNwQXKGw/BZl0y+FiQtXu+uCts0jZhigTIuiuQPNAIlE/zJyp0Q8yP7VXK6qZnCBoJ2/6HRHSblsEJ7Eb2thcv+Sox1lcv5ZR7HoEXzBw7BQDVLI4zan940d12yHXSW2A9DkrKO0HYAqZyW07QDwVj06EgOgj+Clf3AEAIgD0Eg5EQ+au7+6AJCdAOFb4wAtP6y2l7DtBIL6LRkqwYZTxRC01bDAAgoFCp2j7QhJAEANDW4zU18z44BL1MAFKi6ugyrtV2OJuc3fbrQ+vTopHfWlRR7coJdABwnvJs0KLN2tPKorh4rKNFga9tl+/WKPHiopASgOs/FQdDFWsf8xgOylyfFsBF3AGBHGy5zc0f4hZSW4xDcALVPlM3zn+fpnejjfVQpjRGTeU+JOtx9rynr+fbvgUqY+5fZauhdI8QwAYyY1O0+G76dUmyGCDLexAPoH6B30Uh+6TobvV7S6wUX0d48dlwJ9w5YOJoDxVGndJLZ1yDF6YONVtjV1Pf4Gf5znFYR3tf02vU+1Gyhvd32LWbL99Cs9fI/EuQ4xtE2OR2F1kX1vk1OAUEXivzeQsfHjan/UWhGKOLVgMijjiQ2qomeztB9fgAkibpYOaO0Y11wTJLutA4IxQdZjvC4GKJjg3gMTAmUH647MUCAMzaEpU+8FyA8FOCmbc8TfTa1p/D84OainIUBEkT1HZ5dYZa2jAFDZwn2HpzWYAcrl8fk/AgwALwul9z7tfHgAAAAASUVORK5CYII=">
+  
+  <script src="../client/v1/sylrtc-client.js"></script>
+</head>
+<body>
+  <header>
+    <img src="./talaria_logo_hor.svg" alt="Talaria Logo" height="42">
+    <h1>Demo</h1>
+    <div class="syl-status">
+      <span id="header_status" class="text">Disconnected</span>
+      <i class="material-icons">info_outline</i>
+    </div>
+
+    <div class="syl-online-users">
+      <i class="material-icons">people</i>
+      <span class="counter">0</span>
+    </div>    
+  </header>
+
+<div class="row-box">
+  <div class="row"> 
+    <div class="syl-card" id="config_and_connect">      
+      <div class="card-title-box">
+        <h2 class="title">Configure and connect</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>
+
+      <p class="card-info">To connect to the server, you need to specify at least User ID, User full name, Client ID, and client or auth token. If you do not have your Client ID yet, you can contact us at info@talaria.solutions to obtain one, or you can use the demo account instead. </p>
+
+      <form>
+        <fieldset>
+          <div class="legend">User and room</div>          
+          <div>
+            <label for="user_id">User ID</label>
+            <input id="user_id" type="text" />
+          </div>
+          <div>
+            <label for="full_name">User full name</label>
+            <input id="full_name" type="text" />
+          </div>
+          <div>
+            <label for="username_prefix">Username prefix <span>(optional)</span></label>
+            <input id="username_prefix" type="text" />
+          </div>
+          <div>
+            <label for="room_name">Room name <span>(optional)</span></label>
+            <input id="room_name" type="text" />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <div class="legend">Authentication <span>(use client OR auth token)</span></div>
+          <div id="demo_account" class="link-btn">Use the demo account</div>
+
+          <section id="auth_fields">
+            <div>
+              <label for="client_id">Client ID</label>
+              <input id="client_id" type="text" />
+            </div>
+            <div>
+              <label for="client_token">Client token</label>
+              <input id="client_token" type="password" />
+            </div>
+            <div>
+              <label for="auth_token">Auth token</label>
+              <input id="auth_token" type="text" />
+            </div>
+          </section>
+        </fieldset>        
+      </form>
+
+      <button id="connect" type="button" class="green">Connect</button>
+    </div>       
+  </div>
+
+  <div class="row">
+    <div class="syl-card" id="customize">      
+      <div class="card-title-box">
+        <h2 class="title">Customize</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>
+
+      <p class="card-info">By changing the parameters below, you can customize some of the user interface aspects. <sup>*</sup>Please note that the UI size "large" parameter is applied only if the UI mode is set to "fullscreen".</p>
+
+      <form class="no-border">
+        <fieldset>                    
+          <div>
+            <label for="language">Language <span>("en" or "sr_Latn")</span></label>
+            <input id="language" type="text" placeholder="en" />
+          </div>
+          <div>
+            <label for="ui_mode">UI mode <span>("minimized" or "fullscreen")</span></label>
+            <input id="ui_mode" type="text" placeholder="minimized" />
+          </div>
+          <div>
+            <label for="ui_size">UI size <span>("normal" or "large")<sup>*</sup></span></label>
+            
+            <input id="ui_size" type="text" placeholder="normal" />
+          </div>
+          <div>
+            <label for="show_buttons_label">Show buttons label <span>(true/false)</span></label>
+            <input id="show_buttons_label" type="text" placeholder="false" />
+          </div>
+          <div>
+            <label for="start_call_with_cam">Start call with cam <span>(true/false)</span></label>
+            <input id="start_call_with_cam" type="text" placeholder="true" />
+          </div>
+          <div>
+            <label for="single_incoming_call_only">Single incomming call only <span>(true/false)</span></label>
+            <input id="single_incoming_call_only" type="text" placeholder="false" />
+          </div>                   
+        </fieldset>        
+      </form>
+
+      <button id="apply_changes" type="button">Apply changes</button>      
+    </div>
+
+    <div class="syl-card" id="generate_auth_token">      
+      <div class="card-title-box">
+        <h2 class="title">Get auth token</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>
+      
+      <p class="card-info">The preferred authentication method to our communication server is by using the Client ID and Auth token. Auth token is a temporary access token that should be obtained on your backend and used in client-side code to avoid potential exposure of your client token. To generate the auth_token, fill in the fields below and click "Generate token."</p>
+
+      <form>
+        <fieldset>
+          <div>
+            <label for="client_id_1">Client ID</label>
+            <input id="client_id_1" type="text" />
+          </div>
+          <div>
+            <label for="client_token_1">Client token</label>
+            <input id="client_token_1" type="password" />
+          </div>
+        </fieldset>        
+      </form>
+
+      <button id="generate_token" type="button">Generate token</button>      
+    </div>
+
+    <div class="syl-card" id="quick_call_links">      
+      <div class="card-title-box">
+        <h2 class="title">Quick call links</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>      
+
+      <p class="card-info">Quick call links are a way to quickly and conveniently get on the call with somebody without requiring the other party to create accounts or enter passwords. By default, they are valid for 24 hours.</p>
+
+      <form>
+        <fieldset>
+          <div>
+            <label for="invited_person_name">Invited persons name</label>
+            <input id="invited_person_name" type="text" />
+          </div>
+        </fieldset>        
+      </form>
+
+      <button id="quick_call" type="button">Create & copy quick call link</button>       
+    </div>
+
+    <div class="syl-card info-expanded" id="quick_links_list">
+      <div class="card-title-box">
+        <h2 class="title">Your quick call links</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>      
+
+      <p class="card-info">You can get the list of all quick call links you created so far, and you can delete them.</p>
+
+      <button id="open_quick_links_list" type="button">Get quick call links</button>      
+    </div>
+
+    <div class="syl-card" id="media_message">
+      <div class="card-title-box">
+        <h2 class="title">Record & Upload Media Message</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>      
+
+      <p class="card-info">You can record and upload audio or video message to the server and get the access link to the message. Maximum message legth is 1 minute. This is typically used to send a message to somebody when you tried calling them, and they are not online at the moment.</p>
+
+      <form>
+        <fieldset>
+          <div>
+            <label for="recipient_name">Recipient name</label>
+            <input id="recipient_name" type="text" />
+          </div>
+        </fieldset>        
+      </form>
+
+      <button id="media_message_btn" type="button">Create media message</button>      
+    </div>
+
+    <div class="syl-card" id="screencast">
+      <div class="card-title-box">
+        <h2 class="title">Record & Upload Screencast</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>      
+
+      <p class="card-info">You can record and upload screencast (with or without audio) to server and get access link to the video file.  Maximum screencast legth is 1 minute. </p>
+
+      <form>
+        <fieldset>
+          <div>
+            <label for="screencast_title">Title</label>
+            <input id="screencast_title" type="text" />
+          </div>
+        </fieldset>        
+      </form>
+
+      <button id="screencast_btn" type="button">Create screencast</button>      
+    </div>
+
+    <div class="syl-card info-expanded" id="av_messages">
+      <div class="card-title-box">
+        <h2 class="title">Your audio/video messages and screencasts</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>      
+
+      <p class="card-info">You can list all audio, video messages and screencast you have created, and you can delete them.</p>
+
+      <button id="open_av_messages" type="button">Get messages</button>      
+    </div> 
+
+    <div class="syl-card info-expanded" id="confroom">
+      <div class="card-title-box">
+        <h2 class="title">Conference Room</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>      
+
+      <p class="card-info">You can create a conference room and get the link which you can share with up to 50 participants.</p>      
+
+      <button id="confroom_btn" type="button">Create room</button>      
+    </div>
+
+    <div class="syl-card info-expanded" id="confrooms_list">
+      <div class="card-title-box">
+        <h2 class="title">Your conference rooms</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>      
+
+      <p class="card-info">You can get the list of all conference rooms you have created so far, and you can delete them.</p>
+
+      <button id="open_confrooms_list" type="button">Get conference rooms</button>      
+    </div>
+
+    <div class="syl-card info-expanded" id="call_phone_number">
+      <div class="card-title-box">
+        <h2 class="title">Call phone number</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>      
+
+      <p class="card-info">For the phone number, please use the international format, starting with the + sign.</p>      
+
+      <button id="call_phone_number_btn" type="button">Call phone number</button>      
+    </div>
+
+    <div class="syl-card info-expanded" id="send_sms">
+      <div class="card-title-box">
+        <h2 class="title">Send SMS</h2>
+        <i class="info-icon active material-icons">info</i>
+        <i class="info-icon inactive material-icons">info_outline</i>
+      </div>      
+
+      <p class="card-info">For the phone number, please use the international format, starting with the + sign. Maximum message length is 160 characters.</p>      
+
+      <button id="send_sms_btn" type="button">Send SMS message</button>      
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p><strong>Talaria is a brand owned by SeeYouLink, Inc. </strong></p>
+  <p>SeeYouLink, Inc. 3773 HOWARD HUGHES PKWY STE 500S, Las Vegas NV 89169, (707) 780-9657 main, <a href="mailto:info@talaria.solutions">info@talaria.solutions</a></p>
+  <p class="copy">Copyright 2020 © SeeYouLink, Inc. All rights Reserved.</p>
+</footer>
+
+<script src="./index.js"></script>
+</body>
+</html>

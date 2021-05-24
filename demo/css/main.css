@@ -1,0 +1,525 @@
+* {
+  box-sizing: border-box;
+}
+
+html {  
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+}
+
+body {
+  padding-top: 100px;
+}
+
+a {
+  text-decoration: none;
+  color: #7e57c2;
+}
+
+.row {
+  width: 100%;
+  /* margin: 0 auto; */
+}
+
+.link-btn {
+  color: #7e57c2;
+  cursor: pointer;
+}
+
+.label-info {
+  position: relative;
+  display: inline-block;
+  margin-top: 3px;
+}
+
+/*
+------------------------------------------------- 
+INFO
+-------------------------------------------------
+*/
+
+.syl-info {
+  width: 300px;
+  height: auto;  
+  border-radius: 15px;
+  box-shadow: 0 7px 20px rgba(0,0,0,0.2);
+  background-color: #FFF;
+  position: fixed;
+  top: 80px;
+  right: 10px;
+  overflow: hidden;
+}
+
+.syl-info .header {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.syl-info .header i {
+  margin-left: auto;
+  color: #7e57c2;
+  cursor: pointer;
+}
+
+.syl-info .header .title {  
+  font-weight: 500;
+}
+
+.syl-info .empty {
+  padding: 20px 15px;
+  font-size: 16px;
+}
+
+.syl-info ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* STATUS LIST */
+
+.syl-info .status-list {
+  padding: 20px;
+}
+
+.syl-info .status-list li {
+  padding: 7px 0px;
+}
+
+
+/* ONLINE USERS */
+
+.syl-info .users-list li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: #f5f5f5;
+  cursor: pointer;
+}
+
+.syl-info .users-list li:hover {
+  background-color: #f5f5f5;
+}
+
+.syl-info .users-list li:last-child {
+  border-bottom: none;
+}
+
+.syl-info .users-list li .avatar {  
+  /* font-size: 30px; */
+  padding: 7px;
+  color: #999;
+  background-color: #DDD;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+.syl-info .users-list li .name {
+  font-size: 18px;
+  padding-right: 20px;
+}
+
+.syl-info .users-list li .action {
+  font-size: 20px;
+  margin-left: 10px;  
+  color: #FFF;
+  background-color: #7e57c2;
+  border-radius: 100px;
+  padding: 8px;  
+}
+
+.syl-info .users-list li .call-btn {
+  margin-left: auto;
+} 
+
+
+
+/*
+------------------------------------------------- 
+HEADER
+-------------------------------------------------
+*/
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FFF;
+  display: flex;
+  align-items: center;
+  height: 72px;  
+  padding: 0 20px;
+  box-shadow: 0 0 1px rgba(0,0,0,0.3);
+}
+
+header img {
+  display: none;
+  margin-right: 20px;
+}
+
+header h1 {
+  font-weight: 400;
+  font-size: 25px;
+  margin: 0;
+  margin-top: 3px;
+}
+
+.syl-status {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: auto;
+  background-color: #ddd;
+  padding: 10px 17px;
+  border-radius: 100px;
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+.syl-status .text {
+  padding-top: 2px;
+}
+
+.syl-status i {
+  display: none;
+  margin-left: 9px;
+}
+
+.syl-status.online {
+  background-color: #40ca71;
+  color: #FFF;
+}
+
+.syl-status.online i {
+  display: inline-block;
+}
+
+.syl-online-users {
+  background-color: #7e57c2;
+  color: #FFF;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.syl-online-users i {
+  font-size: 30px;
+}
+
+.syl-online-users .counter {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 25px;
+  height: 25px;
+  background-color: #f55;
+  font-size: 12px;  
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  border: 1px solid #FFF;
+}
+
+
+/*
+------------------------------------------------- 
+FOOTER
+-------------------------------------------------
+*/
+
+footer {
+  padding: 50px;
+}
+
+footer p {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 5px;  
+}
+
+footer p.copy {
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+
+/*
+------------------------------------------------- 
+CARD
+-------------------------------------------------
+*/
+
+.syl-card {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #FFF;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.syl-card h2 {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 20px;
+  text-align: center;
+}
+
+
+/*
+------------------------------------------------- 
+BUTTON
+-------------------------------------------------
+*/
+
+button {
+  border: none;
+  box-shadow: none;
+  border-radius: 100px;
+  background-color: #7e57c2;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px;
+  outline: none;
+  cursor: pointer;  
+}
+
+button.red {
+  background-color: #f55;
+}
+
+button.green {
+  background-color: #40ca71;
+}
+
+button:disabled {
+  background-color: #DDD;
+}
+
+
+/*
+------------------------------------------------- 
+FORM
+-------------------------------------------------
+*/
+
+form {
+  border-bottom: 1px solid #ddd;
+}
+
+form.no-border {
+  border: none;
+}
+
+fieldset {
+  padding: 15px 20px;
+  border-top: 1px solid #ddd;
+}
+
+.legend {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.legend span,
+label span {
+  font-weight: 400;
+  font-size: 14px;
+  color: #666;
+}
+
+.syl-card button {
+  width: 240px;
+  margin: 25px auto;
+  display: block;
+}
+
+form fieldset > div,
+form fieldset section > div {
+  padding: 5px 0;  
+}
+
+form label {
+  width: 300px;
+  display: inline-block;
+}
+
+form input {
+  width: 100%;
+  padding: 6px 10px;
+  border: none;
+  background-color: #ececec;
+  border-radius: 50px;
+  outline: none;
+  border: 1px solid #DDD;
+}
+
+form input.error {
+  background-color: #ffe5e5;
+  border-color: #f55;
+}
+
+form input:focus {
+  border: 1px solid #7e57c2;
+  background-color: #FFF;
+}
+
+#apply_changes {
+  display: none;
+}
+
+.response-box {
+  padding: 20px;
+}
+
+.res-info {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #444;
+}
+
+.res-label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.res-link {
+  word-break: break-all;
+  padding: 7px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  color: #757575;  
+}
+
+.quick-link-box {
+  padding: 10px;
+  border: 1px solid #DDD;
+  border-radius: 7px;
+  margin: 10px;
+}
+
+.quick-link-box .expiration {
+  margin-bottom: 7px;
+}
+
+.quick-link-box .link {
+  text-decoration: none;
+  word-break: break-all;
+  color: #7e57c2;
+}
+
+#quick_call_card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#quick_call_card p {
+  font-size: 17px;
+  margin: 20px;
+  text-align: center;
+}
+
+.card-info {
+  font-size: 16px;
+  padding: 20px;
+  text-align: left;
+  border-top: 1px solid #ddd;
+  margin-top: 0;
+  display: none;
+}
+
+.card-title-box {
+  display: flex;
+  align-items: center;
+  cursor: pointer;  
+}
+
+.card-title-box .title {
+  text-align: left;
+  margin-right: auto;  
+}
+
+.card-title-box .info-icon {
+  font-size: 28px;
+  color: #7e57c2;
+  padding: 18px;  
+}
+
+.syl-card.info-expanded .card-info {
+  display: block;
+}
+
+.syl-card .info-icon.active {
+  display: none;
+}
+
+.syl-card.info-expanded .info-icon.active {
+  display: inline-block;
+}
+
+.syl-card .info-icon.inactive {
+  display: inline-block;
+}
+
+.syl-card.info-expanded .info-icon.inactive {
+  display: none;
+}
+
+
+/*
+------------------------------------------------- 
+MEDIA QUERIES
+-------------------------------------------------
+*/
+
+@media only screen and (min-width: 600px) {
+  header img {
+    display: inline-block;
+  }
+
+  .row {
+    width: 600px;
+    margin: 0 auto;
+  }
+  
+  form input {
+    width: 240px;
+  }
+}
+
+
+@media only screen and (min-width: 1280px) {
+  .row-box {
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .row {
+    margin: 0;
+    padding: 10px;
+    width: 50%;
+  }
+
+  .syl-card {
+    margin: 0;
+    margin-bottom: 20px;
+  }
+}
