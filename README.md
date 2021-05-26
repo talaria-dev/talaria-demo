@@ -2,7 +2,7 @@
 
 [Online Demo Page](https://rtc.talaria.solutions/demo/)
 
-[Documentation](https://github.com/seeyoulink/sylrtc-demo/wiki/Basic-concepts-explained)
+[Documentation](https://github.com/talaria-dev/talaria-demo/wiki/Basic-concepts-explained)
 
 [Website](https://talaria.solutions/)
 
