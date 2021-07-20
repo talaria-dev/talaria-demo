@@ -10,124 +10,142 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">  
   
-  <link rel="icon" type="image/png" sizes="64x64"  href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABBVJREFUeNrsW01oE0EUno0Fgz0YkaIoSKIgKmLSQ0EvbXKsl1YQWi8mOXoqvXlKSM5K6KnHJKdSKCS52IuQtB4sWMhGMFYRjYJ/lNJ4qEQo6Lw4xc1kNvuT7O5M1gePDdNms++b7/3NzkjIYknMbYbxBTSI1Y81pPEVGWsDaw1rJb06WbHy+SQLDPbhyyzWGXIdhBSxluCKAWlyCQA2HGZ2AWvMYlLlsOYHxQxpQBRPEprbKQBAql8gpD6pnrFhxvUwYtGsa0gmjQffzmL1IT4EjI9jEIqWA4CNz3Iw66pswCDELQGAUL6sI405LZBGI3pdQhoy4w2DIOk0/gNH/m4kLoxjEBq9/smjc+ZFMx6RZy4QG8wBIBjtWRIiNhh3AVa0P+sfRd4TI9xb3aj/0J0dpB55vkCPxxM3kP/aSe4BqKx9QuW1j/TwHVad4FHx+6zAtEfhuxfQlYnT9HCWFQ9YMSAjaNDrnO4Hl5FvzEsHxUxPAEhjEzPgW9wKxCoAgZIYsVGVAcleN93fbQnFAohXoakzqJeNHsbKjarsbO+h1s9DoUCYjl5E3tGOzBUmaxddDIhq3ax1cIi2nnwRCgBwhVvT5+nhhQ4ASHTU1eFBehEpFoDcvH2OFQt8SgYYWrtbeVxH8sZ3oVjAiAWzSgBmjNwQXKGw/BZl0y+FiQtXu+uCts0jZhigTIuiuQPNAIlE/zJyp0Q8yP7VXK6qZnCBoJ2/6HRHSblsEJ7Eb2thcv+Sox1lcv5ZR7HoEXzBw7BQDVLI4zan940d12yHXSW2A9DkrKO0HYAqZyW07QDwVj06EgOgj+Clf3AEAIgD0Eg5EQ+au7+6AJCdAOFb4wAtP6y2l7DtBIL6LRkqwYZTxRC01bDAAgoFCp2j7QhJAEANDW4zU18z44BL1MAFKi6ugyrtV2OJuc3fbrQ+vTopHfWlRR7coJdABwnvJs0KLN2tPKorh4rKNFga9tl+/WKPHiopASgOs/FQdDFWsf8xgOylyfFsBF3AGBHGy5zc0f4hZSW4xDcALVPlM3zn+fpnejjfVQpjRGTeU+JOtx9rynr+fbvgUqY+5fZauhdI8QwAYyY1O0+G76dUmyGCDLexAPoH6B30Uh+6TobvV7S6wUX0d48dlwJ9w5YOJoDxVGndJLZ1yDF6YONVtjV1Pf4Gf5znFYR3tf02vU+1Gyhvd32LWbL99Cs9fI/EuQ4xtE2OR2F1kX1vk1OAUEXivzeQsfHjan/UWhGKOLVgMijjiQ2qomeztB9fgAkibpYOaO0Y11wTJLutA4IxQdZjvC4GKJjg3gMTAmUH647MUCAMzaEpU+8FyA8FOCmbc8TfTa1p/D84OainIUBEkT1HZ5dYZa2jAFDZwn2HpzWYAcrl8fk/AgwALwul9z7tfHgAAAAASUVORK5CYII=">
-  
-  <script src="../client/v1/sylrtc-client.js"></script>
+  <link rel="icon" type="image/png" sizes="64x64"  href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABBVJREFUeNrsW01oE0EUno0Fgz0YkaIoSKIgKmLSQ0EvbXKsl1YQWi8mOXoqvXlKSM5K6KnHJKdSKCS52IuQtB4sWMhGMFYRjYJ/lNJ4qEQo6Lw4xc1kNvuT7O5M1gePDdNms++b7/3NzkjIYknMbYbxBTSI1Y81pPEVGWsDaw1rJb06WbHy+SQLDPbhyyzWGXIdhBSxluCKAWlyCQA2HGZ2AWvMYlLlsOYHxQxpQBRPEprbKQBAql8gpD6pnrFhxvUwYtGsa0gmjQffzmL1IT4EjI9jEIqWA4CNz3Iw66pswCDELQGAUL6sI405LZBGI3pdQhoy4w2DIOk0/gNH/m4kLoxjEBq9/smjc+ZFMx6RZy4QG8wBIBjtWRIiNhh3AVa0P+sfRd4TI9xb3aj/0J0dpB55vkCPxxM3kP/aSe4BqKx9QuW1j/TwHVad4FHx+6zAtEfhuxfQlYnT9HCWFQ9YMSAjaNDrnO4Hl5FvzEsHxUxPAEhjEzPgW9wKxCoAgZIYsVGVAcleN93fbQnFAohXoakzqJeNHsbKjarsbO+h1s9DoUCYjl5E3tGOzBUmaxddDIhq3ax1cIi2nnwRCgBwhVvT5+nhhQ4ASHTU1eFBehEpFoDcvH2OFQt8SgYYWrtbeVxH8sZ3oVjAiAWzSgBmjNwQXKGw/BZl0y+FiQtXu+uCts0jZhigTIuiuQPNAIlE/zJyp0Q8yP7VXK6qZnCBoJ2/6HRHSblsEJ7Eb2thcv+Sox1lcv5ZR7HoEXzBw7BQDVLI4zan940d12yHXSW2A9DkrKO0HYAqZyW07QDwVj06EgOgj+Clf3AEAIgD0Eg5EQ+au7+6AJCdAOFb4wAtP6y2l7DtBIL6LRkqwYZTxRC01bDAAgoFCp2j7QhJAEANDW4zU18z44BL1MAFKi6ugyrtV2OJuc3fbrQ+vTopHfWlRR7coJdABwnvJs0KLN2tPKorh4rKNFga9tl+/WKPHiopASgOs/FQdDFWsf8xgOylyfFsBF3AGBHGy5zc0f4hZSW4xDcALVPlM3zn+fpnejjfVQpjRGTeU+JOtx9rynr+fbvgUqY+5fZauhdI8QwAYyY1O0+G76dUmyGCDLexAPoH6B30Uh+6TobvV7S6wUX0d48dlwJ9w5YOJoDxVGndJLZ1yDF6YONVtjV1Pf4Gf5znFYR3tf02vU+1Gyhvd32LWbL99Cs9fI/EuQ4xtE2OR2F1kX1vk1OAUEXivzeQsfHjan/UWhGKOLVgMijjiQ2qomeztB9fgAkibpYOaO0Y11wTJLutA4IxQdZjvC4GKJjg3gMTAmUH647MUCAMzaEpU+8FyA8FOCmbc8TfTa1p/D84OainIUBEkT1HZ5dYZa2jAFDZwn2HpzWYAcrl8fk/AgwALwul9z7tfHgAAAAASUVORK5CYII=">  
+  <script src="https://cdn.talaria.solutions/client/v1/tlr-client.js"></script>
 </head>
 <body>
 <header>
   <img src="./talaria_logo_hor.svg" alt="Talaria Logo" height="42">
   <h1>Quick Call</h1>
 </header>
-<div id="status">
 
-</div>
+<div id="status"></div>
 
-
-  
-<div class="syl-card" id="quick_call_card">  
+<div class="tlr-card" id="quick_call_card">  
   <h2>Hello!</h2>
   <div class="quick_call_info_box">
-    <p id="info"><strong>You are invited by <span class="inviter"></span> to call him/her.</strong><br><br> <span id='validity_info'>This invitation link is valid till <span id="expiration_time"></span>.</span> <br><br><span id="inviter_name" class="inviter"> </span> <span id="inviter_status"></span></p>
+    <p id="info">
+      <strong>You are invited by <span class="inviter"></span> to call him/her.</strong>
+      <br><br>
+      <span id='validity_info'>This invitation link is valid till <span id="expiration_time"></span>.</span>
+      <br><br>
+      <span id="inviter_name" class="inviter"></span>
+      <span id="inviter_status"></span>
+    </p>
   </div>
   <button id="quick_call" type="button">Call</button>
 </div>
-  
-
-
 
 <script lang="javascript">
 var inviter_username;
+
 function connect(){
   var url_string = location.href;
   var url = new URL(url_string);
-  var quick_call_token = url.searchParams.get("quick_call_token");
-  console.log("quick_call_token="+quick_call_token);
-  $.get( "/api/quick_call_info/", {quick_call_token:quick_call_token}, function( data, status, xhr ) {
-    console.log(data);
-    if(data.error){
-      $('#info').html('Error: Invalid or expired token!');
-        $('#info').addClass('error');
-        $('#quick_call').attr("disabled","disabled");
-    } else {
-      var ui_mode = 'fullscreen';
-      var start_call_with_cam = true;
-      var single_incoming_call_only = false;
-      var username_prefix= "qc";
-      var user_id= quick_call_token.substr(quick_call_token.length - 7);
-      var inviter= data.data.user_full_name;
-      var client_id= data.data.client_id;
-      inviter_username= data.data.username;
-      var expiration_time= data.data.expiration_time;
-      var localtime= new Date(data.data.expiration_time).toString().split(" GMT")[0];      
-      var invited_person_name= data.data.invited_person_name;
-      var room = data.data.room;
-      $('.inviter').html(inviter);
-      $('#quick_call').html('Call '+inviter);
-      $('#quick_call_card h2').html('Hello '+ invited_person_name+ '!');
-      $('#expiration_time').html(localtime);
-      if (data.message == 'success'){
-        var url_protocol = window.location.protocol;
-        var url_host = window.location.host;
-        var rtc_server = url_protocol + '//' + url_host;
+  var token = url.searchParams.get("quick_call_token");  
 
-        sylrtc.init({ // configure sylrtc_client
-          //avatar_path: avatar_path, // optional, relative path to user avatar
-          room_name: room, // optional
-          ui_mode: ui_mode,
-          start_call_with_cam: start_call_with_cam,
-          rtc_server: rtc_server,
-          single_incoming_call_only: single_incoming_call_only,
-          user: {
-            username_prefix: username_prefix, // SYL 3rd party ID, e.g. yn or rs
-            id: user_id, // user id in your application
-            full_name: invited_person_name // full user name
-          },
-          credentials: { // please enter your given id and token
-            quick_call_token: quick_call_token,
-            client_id: client_id
-          }
-        });
-        $('#inviter_status').html('is currently not online. Please check back latter!');
-        $('#quick_call').removeAttr("disabled");
-        sylrtc.on('onlinepresencechanged', function(onlineUsers){
-          var is_inviter_online = false;
-          console.log(onlineUsers);
-          for(var i=0; i<onlineUsers.length; i++){
-            if(onlineUsers[i].username == inviter_username){
-              is_inviter_online = true;
-            }
-          }
+  tlr.quickLinks.getLinkInfo(token).then(function(info){    
+    inviter_username = info.username;    
+    var expiration_time = info.expiration_time;
+    var localtime = new Date(info.expiration_time).toString().split(" GMT")[0];      
+    var inviter = info.user_full_name;
+    var invited_person_name = info.invited_person_name;    
+    
+    $('.inviter').html(inviter);
+    $('#quick_call').html('Call '+inviter);
+    $('#quick_call_card h2').html('Hello '+ invited_person_name+ '!');
+    $('#expiration_time').html(localtime);    
 
-          if(is_inviter_online){
-            $('#inviter_status').html('is currently online, and you can place call by clicking the button bellow!');
-            $('#quick_call').removeAttr("disabled");
-          } else {
-            $('#inviter_status').html('is currently not online. Please check back latter!');
-            $('#quick_call').attr("disabled","disabled");
-          }
+    if (!info.expired) {
+      var url_protocol = window.location.protocol;
+      var url_host = window.location.host;
+      var rtc_server = url_protocol + '//' + url_host;      
 
-        });
-
-        sylrtc.connect();
-
-      } else {
-        $('#validity_info').html('Invitation has expired. Please contact '+inviter+ '.');
-        $('#validity_info').addClass('error');
-        $('#inviter_status').html('');
-        $('#inviter_name').html('');
-        $('#quick_call').attr("disabled","disabled");
-
+      const tlr_config = {
+        room_name: info.room,
+        ui_mode: 'fullscreen',
+        start_call_with_cam: true,
+        rtc_server: rtc_server,
+        single_incoming_call_only: false,
+        user: {
+          username_prefix: 'qc',
+          id: token.substr(token.length - 7),
+          full_name: invited_person_name
+        },
+        credentials: { // please enter your given id and token
+          quick_call_token: token,
+          client_id: info.client_id
+        }
       }
 
+      tlr.init(tlr_config);
+
+      $('#inviter_status').html('is currently not online. Please check back latter!');
+      $('#quick_call').removeAttr("disabled");
+      
+      tlr.on('onlinepresencechanged', function(onlineUsers){
+        var is_inviter_online = false;        
+        for (var i=0; i<onlineUsers.length; i++) {
+          if (onlineUsers[i].username == inviter_username) {
+            is_inviter_online = true;
+          }
+        }
+
+        if (is_inviter_online) {
+          $('#inviter_status').html('is currently online, and you can place call by clicking the button bellow!');
+          $('#quick_call').removeAttr("disabled");
+        } else {
+          $('#inviter_status').html('is currently not online. Please check back latter!');
+          $('#quick_call').attr("disabled","disabled");
+        }
+      });
+
+      tlr.on("chatmessage", function (message) {
+        message.participants = message.participants.join();
+
+        if (message.file) {
+          message.file = JSON.stringify(message.file);
+        }
+
+        let data = {
+          client_id: $("#client_id").val(),    
+          message: message,
+        };
+
+        if ($("#auth_token").val()) {
+          data.auth_token = $("#auth_token").val();
+        } else {
+          data.client_token = $("#client_token").val();
+        }  
+
+        $.ajax({
+          type: "POST",
+          url: "/api/save_chat_message/",
+          contentType: "application/json; charset=utf-8",
+          data: JSON.stringify(data),
+          success: function (res) {},
+        });
+      });
+
+      tlr.connect();
+
+    } else {
+      $('#validity_info').html('Invitation has expired. Please contact '+inviter+ '.');
+      $('#validity_info').addClass('error');
+      $('#inviter_status').html('');
+      $('#inviter_name').html('');
+      $('#quick_call').remove();
     }
+  
+  }).catch(function(error){    
+    $('#info').html('Error: Invalid or expired token!');
+    $('#info').addClass('error');
+    $('#quick_call').remove();
   });
-
-
 }
 
 document.getElementById('quick_call').onclick = function(){
-  sylrtc.performCall(inviter_username);
+  tlr.performCall(inviter_username);
 }
 
 connect();

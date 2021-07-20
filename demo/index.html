@@ -12,18 +12,18 @@
   
   <link rel="icon" type="image/png" sizes="64x64"  href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABBVJREFUeNrsW01oE0EUno0Fgz0YkaIoSKIgKmLSQ0EvbXKsl1YQWi8mOXoqvXlKSM5K6KnHJKdSKCS52IuQtB4sWMhGMFYRjYJ/lNJ4qEQo6Lw4xc1kNvuT7O5M1gePDdNms++b7/3NzkjIYknMbYbxBTSI1Y81pPEVGWsDaw1rJb06WbHy+SQLDPbhyyzWGXIdhBSxluCKAWlyCQA2HGZ2AWvMYlLlsOYHxQxpQBRPEprbKQBAql8gpD6pnrFhxvUwYtGsa0gmjQffzmL1IT4EjI9jEIqWA4CNz3Iw66pswCDELQGAUL6sI405LZBGI3pdQhoy4w2DIOk0/gNH/m4kLoxjEBq9/smjc+ZFMx6RZy4QG8wBIBjtWRIiNhh3AVa0P+sfRd4TI9xb3aj/0J0dpB55vkCPxxM3kP/aSe4BqKx9QuW1j/TwHVad4FHx+6zAtEfhuxfQlYnT9HCWFQ9YMSAjaNDrnO4Hl5FvzEsHxUxPAEhjEzPgW9wKxCoAgZIYsVGVAcleN93fbQnFAohXoakzqJeNHsbKjarsbO+h1s9DoUCYjl5E3tGOzBUmaxddDIhq3ax1cIi2nnwRCgBwhVvT5+nhhQ4ASHTU1eFBehEpFoDcvH2OFQt8SgYYWrtbeVxH8sZ3oVjAiAWzSgBmjNwQXKGw/BZl0y+FiQtXu+uCts0jZhigTIuiuQPNAIlE/zJyp0Q8yP7VXK6qZnCBoJ2/6HRHSblsEJ7Eb2thcv+Sox1lcv5ZR7HoEXzBw7BQDVLI4zan940d12yHXSW2A9DkrKO0HYAqZyW07QDwVj06EgOgj+Clf3AEAIgD0Eg5EQ+au7+6AJCdAOFb4wAtP6y2l7DtBIL6LRkqwYZTxRC01bDAAgoFCp2j7QhJAEANDW4zU18z44BL1MAFKi6ugyrtV2OJuc3fbrQ+vTopHfWlRR7coJdABwnvJs0KLN2tPKorh4rKNFga9tl+/WKPHiopASgOs/FQdDFWsf8xgOylyfFsBF3AGBHGy5zc0f4hZSW4xDcALVPlM3zn+fpnejjfVQpjRGTeU+JOtx9rynr+fbvgUqY+5fZauhdI8QwAYyY1O0+G76dUmyGCDLexAPoH6B30Uh+6TobvV7S6wUX0d48dlwJ9w5YOJoDxVGndJLZ1yDF6YONVtjV1Pf4Gf5znFYR3tf02vU+1Gyhvd32LWbL99Cs9fI/EuQ4xtE2OR2F1kX1vk1OAUEXivzeQsfHjan/UWhGKOLVgMijjiQ2qomeztB9fgAkibpYOaO0Y11wTJLutA4IxQdZjvC4GKJjg3gMTAmUH647MUCAMzaEpU+8FyA8FOCmbc8TfTa1p/D84OainIUBEkT1HZ5dYZa2jAFDZwn2HpzWYAcrl8fk/AgwALwul9z7tfHgAAAAASUVORK5CYII=">
   
-  <script src="../client/v1/sylrtc-client.js"></script>
+  <script src="https://cdn.talaria.solutions/client/v1/tlr-client.js"></script>
 </head>
 <body>
   <header>
     <img src="./talaria_logo_hor.svg" alt="Talaria Logo" height="42">
     <h1>Demo</h1>
-    <div class="syl-status">
+    <div class="tlr-status">
       <span id="header_status" class="text">Disconnected</span>
       <i class="material-icons">info_outline</i>
     </div>
 
-    <div class="syl-online-users">
+    <div class="tlr-online-users">
       <i class="material-icons">people</i>
       <span class="counter">0</span>
     </div>    
@@ -31,7 +31,7 @@
 
 <div class="row-box">
   <div class="row"> 
-    <div class="syl-card" id="config_and_connect">      
+    <div class="tlr-card" id="config_and_connect">      
       <div class="card-title-box">
         <h2 class="title">Configure and connect</h2>
         <i class="info-icon active material-icons">info</i>
@@ -87,7 +87,7 @@
   </div>
 
   <div class="row">
-    <div class="syl-card" id="customize">      
+    <div class="tlr-card" id="customize">      
       <div class="card-title-box">
         <h2 class="title">Customize</h2>
         <i class="info-icon active material-icons">info</i>
@@ -129,7 +129,7 @@
       <button id="apply_changes" type="button">Apply changes</button>      
     </div>
 
-    <div class="syl-card" id="generate_auth_token">      
+    <div class="tlr-card" id="generate_auth_token">      
       <div class="card-title-box">
         <h2 class="title">Get auth token</h2>
         <i class="info-icon active material-icons">info</i>
@@ -154,7 +154,7 @@
       <button id="generate_token" type="button">Generate token</button>      
     </div>
 
-    <div class="syl-card" id="quick_call_links">      
+    <div class="tlr-card" id="quick_call_links">      
       <div class="card-title-box">
         <h2 class="title">Quick call links</h2>
         <i class="info-icon active material-icons">info</i>
@@ -175,7 +175,7 @@
       <button id="quick_call" type="button">Create & copy quick call link</button>       
     </div>
 
-    <div class="syl-card info-expanded" id="quick_links_list">
+    <div class="tlr-card info-expanded" id="quick_links_list">
       <div class="card-title-box">
         <h2 class="title">Your quick call links</h2>
         <i class="info-icon active material-icons">info</i>
@@ -187,7 +187,7 @@
       <button id="open_quick_links_list" type="button">Get quick call links</button>      
     </div>
 
-    <div class="syl-card" id="media_message">
+    <div class="tlr-card" id="media_message">
       <div class="card-title-box">
         <h2 class="title">Record & Upload Media Message</h2>
         <i class="info-icon active material-icons">info</i>
@@ -208,7 +208,7 @@
       <button id="media_message_btn" type="button">Create media message</button>      
     </div>
 
-    <div class="syl-card" id="screencast">
+    <div class="tlr-card" id="screencast">
       <div class="card-title-box">
         <h2 class="title">Record & Upload Screencast</h2>
         <i class="info-icon active material-icons">info</i>
@@ -229,7 +229,7 @@
       <button id="screencast_btn" type="button">Create screencast</button>      
     </div>
 
-    <div class="syl-card info-expanded" id="av_messages">
+    <div class="tlr-card info-expanded" id="av_messages">
       <div class="card-title-box">
         <h2 class="title">Your audio/video messages and screencasts</h2>
         <i class="info-icon active material-icons">info</i>
@@ -241,7 +241,7 @@
       <button id="open_av_messages" type="button">Get messages</button>      
     </div> 
 
-    <div class="syl-card info-expanded" id="confroom">
+    <div class="tlr-card info-expanded" id="confroom">
       <div class="card-title-box">
         <h2 class="title">Conference Room</h2>
         <i class="info-icon active material-icons">info</i>
@@ -253,7 +253,7 @@
       <button id="confroom_btn" type="button">Create room</button>      
     </div>
 
-    <div class="syl-card info-expanded" id="confrooms_list">
+    <div class="tlr-card info-expanded" id="confrooms_list">
       <div class="card-title-box">
         <h2 class="title">Your conference rooms</h2>
         <i class="info-icon active material-icons">info</i>
@@ -265,7 +265,7 @@
       <button id="open_confrooms_list" type="button">Get conference rooms</button>      
     </div>
 
-    <div class="syl-card info-expanded" id="call_phone_number">
+    <div class="tlr-card info-expanded" id="call_phone_number">
       <div class="card-title-box">
         <h2 class="title">Call phone number</h2>
         <i class="info-icon active material-icons">info</i>
@@ -277,7 +277,7 @@
       <button id="call_phone_number_btn" type="button">Call phone number</button>      
     </div>
 
-    <div class="syl-card info-expanded" id="send_sms">
+    <div class="tlr-card info-expanded" id="send_sms">
       <div class="card-title-box">
         <h2 class="title">Send SMS</h2>
         <i class="info-icon active material-icons">info</i>
@@ -291,11 +291,11 @@
   </div>
 </div>
 
-<footer>
-  <p><strong>Talaria is a brand owned by SeeYouLink, Inc. </strong></p>
-  <p>SeeYouLink, Inc. 3773 HOWARD HUGHES PKWY STE 500S, Las Vegas NV 89169, (707) 780-9657 main, <a href="mailto:info@talaria.solutions">info@talaria.solutions</a></p>
-  <p class="copy">Copyright 2020 © SeeYouLink, Inc. All rights Reserved.</p>
-</footer>
+<!-- <footer>
+  <p><strong>Talaria, Inc. </strong></p>
+  <p><a href="mailto:info@talaria.solutions">info@talaria.solutions</a></p>
+  <p class="copy">Copyright 2021 © Talaria, Inc. All rights Reserved.</p>
+</footer> -->
 
 <script src="./index.js"></script>
 </body>

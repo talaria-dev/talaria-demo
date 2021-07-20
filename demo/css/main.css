@@ -38,7 +38,7 @@ INFO
 -------------------------------------------------
 */
 
-.syl-info {
+.tlr-info {
   width: 300px;
   height: auto;  
   border-radius: 15px;
@@ -50,29 +50,29 @@ INFO
   overflow: hidden;
 }
 
-.syl-info .header {
+.tlr-info .header {
   display: flex;
   align-items: center;
   padding: 10px 15px;
   border-bottom: 1px solid #ddd;
 }
 
-.syl-info .header i {
+.tlr-info .header i {
   margin-left: auto;
   color: #7e57c2;
   cursor: pointer;
 }
 
-.syl-info .header .title {  
+.tlr-info .header .title {  
   font-weight: 500;
 }
 
-.syl-info .empty {
+.tlr-info .empty {
   padding: 20px 15px;
   font-size: 16px;
 }
 
-.syl-info ul {
+.tlr-info ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -80,18 +80,18 @@ INFO
 
 /* STATUS LIST */
 
-.syl-info .status-list {
+.tlr-info .status-list {
   padding: 20px;
 }
 
-.syl-info .status-list li {
+.tlr-info .status-list li {
   padding: 7px 0px;
 }
 
 
 /* ONLINE USERS */
 
-.syl-info .users-list li {
+.tlr-info .users-list li {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -99,15 +99,15 @@ INFO
   cursor: pointer;
 }
 
-.syl-info .users-list li:hover {
+.tlr-info .users-list li:hover {
   background-color: #f5f5f5;
 }
 
-.syl-info .users-list li:last-child {
+.tlr-info .users-list li:last-child {
   border-bottom: none;
 }
 
-.syl-info .users-list li .avatar {  
+.tlr-info .users-list li .avatar {  
   /* font-size: 30px; */
   padding: 7px;
   color: #999;
@@ -116,12 +116,18 @@ INFO
   margin-right: 10px;
 }
 
-.syl-info .users-list li .name {
+.tlr-info .users-list li .name {
   font-size: 18px;
   padding-right: 20px;
+  word-break: break-all;
 }
 
-.syl-info .users-list li .action {
+.user-actions-box {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.tlr-info .users-list li .action {
   font-size: 20px;
   margin-left: 10px;  
   color: #FFF;
@@ -130,7 +136,7 @@ INFO
   padding: 8px;  
 }
 
-.syl-info .users-list li .call-btn {
+.tlr-info .users-list li .call-btn {
   margin-left: auto;
 } 
 
@@ -167,7 +173,7 @@ header h1 {
   margin-top: 3px;
 }
 
-.syl-status {
+.tlr-status {
   cursor: pointer;
   display: inline-block;
   margin-left: auto;
@@ -179,25 +185,25 @@ header h1 {
   align-items: center;
 }
 
-.syl-status .text {
+.tlr-status .text {
   padding-top: 2px;
 }
 
-.syl-status i {
+.tlr-status i {
   display: none;
   margin-left: 9px;
 }
 
-.syl-status.online {
+.tlr-status.online {
   background-color: #40ca71;
   color: #FFF;
 }
 
-.syl-status.online i {
+.tlr-status.online i {
   display: inline-block;
 }
 
-.syl-online-users {
+.tlr-online-users {
   background-color: #7e57c2;
   color: #FFF;
   position: relative;
@@ -211,11 +217,11 @@ header h1 {
   cursor: pointer;
 }
 
-.syl-online-users i {
+.tlr-online-users i {
   font-size: 30px;
 }
 
-.syl-online-users .counter {
+.tlr-online-users .counter {
   position: absolute;
   top: -6px;
   right: -6px;
@@ -262,7 +268,7 @@ CARD
 -------------------------------------------------
 */
 
-.syl-card {
+.tlr-card {
   width: 100%;
   margin: 0 auto;
   background-color: #FFF;
@@ -272,7 +278,7 @@ CARD
   overflow: hidden;
 }
 
-.syl-card h2 {
+.tlr-card h2 {
   font-weight: 700;
   font-size: 18px;
   margin: 20px;
@@ -343,7 +349,7 @@ label span {
   color: #666;
 }
 
-.syl-card button {
+.tlr-card button {
   width: 240px;
   margin: 25px auto;
   display: block;
@@ -461,23 +467,23 @@ form input:focus {
   padding: 18px;  
 }
 
-.syl-card.info-expanded .card-info {
+.tlr-card.info-expanded .card-info {
   display: block;
 }
 
-.syl-card .info-icon.active {
+.tlr-card .info-icon.active {
   display: none;
 }
 
-.syl-card.info-expanded .info-icon.active {
+.tlr-card.info-expanded .info-icon.active {
   display: inline-block;
 }
 
-.syl-card .info-icon.inactive {
+.tlr-card .info-icon.inactive {
   display: inline-block;
 }
 
-.syl-card.info-expanded .info-icon.inactive {
+.tlr-card.info-expanded .info-icon.inactive {
   display: none;
 }
 
@@ -518,7 +524,7 @@ MEDIA QUERIES
     width: 50%;
   }
 
-  .syl-card {
+  .tlr-card {
     margin: 0;
     margin-bottom: 20px;
   }
