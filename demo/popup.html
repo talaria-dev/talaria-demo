@@ -1,0 +1,163 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <title>Talaria</title>
+  <meta name="description" content="Talaria Demo">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">  
+  <link rel="icon" type="image/png" sizes="64x64"  href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABBVJREFUeNrsW01oE0EUno0Fgz0YkaIoSKIgKmLSQ0EvbXKsl1YQWi8mOXoqvXlKSM5K6KnHJKdSKCS52IuQtB4sWMhGMFYRjYJ/lNJ4qEQo6Lw4xc1kNvuT7O5M1gePDdNms++b7/3NzkjIYknMbYbxBTSI1Y81pPEVGWsDaw1rJb06WbHy+SQLDPbhyyzWGXIdhBSxluCKAWlyCQA2HGZ2AWvMYlLlsOYHxQxpQBRPEprbKQBAql8gpD6pnrFhxvUwYtGsa0gmjQffzmL1IT4EjI9jEIqWA4CNz3Iw66pswCDELQGAUL6sI405LZBGI3pdQhoy4w2DIOk0/gNH/m4kLoxjEBq9/smjc+ZFMx6RZy4QG8wBIBjtWRIiNhh3AVa0P+sfRd4TI9xb3aj/0J0dpB55vkCPxxM3kP/aSe4BqKx9QuW1j/TwHVad4FHx+6zAtEfhuxfQlYnT9HCWFQ9YMSAjaNDrnO4Hl5FvzEsHxUxPAEhjEzPgW9wKxCoAgZIYsVGVAcleN93fbQnFAohXoakzqJeNHsbKjarsbO+h1s9DoUCYjl5E3tGOzBUmaxddDIhq3ax1cIi2nnwRCgBwhVvT5+nhhQ4ASHTU1eFBehEpFoDcvH2OFQt8SgYYWrtbeVxH8sZ3oVjAiAWzSgBmjNwQXKGw/BZl0y+FiQtXu+uCts0jZhigTIuiuQPNAIlE/zJyp0Q8yP7VXK6qZnCBoJ2/6HRHSblsEJ7Eb2thcv+Sox1lcv5ZR7HoEXzBw7BQDVLI4zan940d12yHXSW2A9DkrKO0HYAqZyW07QDwVj06EgOgj+Clf3AEAIgD0Eg5EQ+au7+6AJCdAOFb4wAtP6y2l7DtBIL6LRkqwYZTxRC01bDAAgoFCp2j7QhJAEANDW4zU18z44BL1MAFKi6ugyrtV2OJuc3fbrQ+vTopHfWlRR7coJdABwnvJs0KLN2tPKorh4rKNFga9tl+/WKPHiopASgOs/FQdDFWsf8xgOylyfFsBF3AGBHGy5zc0f4hZSW4xDcALVPlM3zn+fpnejjfVQpjRGTeU+JOtx9rynr+fbvgUqY+5fZauhdI8QwAYyY1O0+G76dUmyGCDLexAPoH6B30Uh+6TobvV7S6wUX0d48dlwJ9w5YOJoDxVGndJLZ1yDF6YONVtjV1Pf4Gf5znFYR3tf02vU+1Gyhvd32LWbL99Cs9fI/EuQ4xtE2OR2F1kX1vk1OAUEXivzeQsfHjan/UWhGKOLVgMijjiQ2qomeztB9fgAkibpYOaO0Y11wTJLutA4IxQdZjvC4GKJjg3gMTAmUH647MUCAMzaEpU+8FyA8FOCmbc8TfTa1p/D84OainIUBEkT1HZ5dYZa2jAFDZwn2HpzWYAcrl8fk/AgwALwul9z7tfHgAAAAASUVORK5CYII=">  
+  <script src="./client/v1/tlr-client.js"></script>
+</head>
+<body>
+  <style>
+    html {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      background-color: #f5f5f5;
+      width: 100%;
+      height: 100%;
+    }
+
+    .header {
+      height: 60px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    .avatar-img {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      border-radius: 50%;
+      display: none;
+      margin-right: 15px;
+    }
+
+    .pop-avatar-icon {
+      padding: 8px;
+      color: #666;
+      background-color: #ddd;
+      border-radius: 50%;
+      margin-right: 15px;
+      display: none;
+    }
+
+    .user-name {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;      
+    }
+
+    .status {
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      padding: 10px 15px;
+      background-color: #999;
+      margin-left: auto;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .status.online {
+      background-color: rgb(34, 224, 129);
+    }
+
+    .contacts {
+      padding: 60px;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #666;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+
+  </style>
+
+  <div class="header">    
+    <img class="avatar-img" src="" alt="">
+    <i class="material-icons pop-avatar-icon">person</i>
+    <span class="user-name"></span>
+    <span class="status">Offline</span>
+  </div>
+
+  <div class="contacts">You don't have any contacts.<br>Please provide contacts list when initializing Talaria.</div>
+
+  <script>
+    var url_protocol = window.location.protocol;
+    var url_host = window.location.host;
+    var rtc_server = url_protocol + "//" + url_host;
+
+    console.log('rtc_server', rtc_server);
+
+    function handleInit(cfg){      
+      console.log('### handleInit :', cfg);
+
+      if (!cfg.credentials.client_id || !cfg.credentials.client_token) {
+        $('.status').toggleClass('online', false).html('Offline');
+        $('.contacts').html('You did not provide a valid configuration from the main window to the popup.');
+        $('.user-name').html('Error');
+        return;
+      }
+
+      if (cfg.user.avatar) {
+        $('.avatar-img').attr('src', data.user.avatar);
+      } else {
+        $('.pop-avatar-icon').show();
+      }
+
+      $('.user-name').html(cfg.user.full_name);
+
+      tlr.init({
+        popup: true,
+        rtc_server: rtc_server,
+        credentials: cfg.credentials,
+        user: cfg.user,
+        ui_mode: 'fullscreen'
+      });
+
+      tlr.connect().then(() => {
+        $('.status').toggleClass('online', true).html('Online');
+      });
+    }
+
+    window.addEventListener('storage', (event) => {      
+      if (event.key === 'tlr_popup_config' && event.newValue != null) {
+        handleInit(JSON.parse(event.newValue));
+      }      
+    });
+
+    window.addEventListener('beforeunload', (e) => {      
+      e.preventDefault();
+      e.returnValue = '';      
+    });
+
+    window.addEventListener('unload', (e) => {      
+      localStorage.setItem('tlr_popup_closed', true);
+    });
+
+    window.addEventListener('load', () => {     
+      if (localStorage.getItem('tlr_popup_config')) {
+        let cfg = JSON.parse(localStorage.getItem('tlr_popup_config'));
+        handleInit(cfg);
+      } else {
+        localStorage.setItem('tlr_popup_opened', true);
+      }
+    });
+  </script>
+</body>
+</html>
