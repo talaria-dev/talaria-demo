@@ -71,7 +71,7 @@
     }
 
     .status.online {
-      background-color: rgb(34, 224, 129);
+      background-color: #40ca71;
     }
 
     .contacts {
@@ -83,8 +83,53 @@
       color: #666;
       width: 100%;
       height: 100%;
-      text-align: center;
+      flex-direction: column;
     }
+
+    .contact {
+      display: flex;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      padding: 10px;
+      width: 400px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      background-color: #FFF;
+      margin-bottom: 10px;
+    }
+
+    .contact img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .contact i {
+      background-color: #ddd;
+      color: #333;
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    .contact span {
+      color: #333;
+      font-size: 18px;      
+    }
+    
+    .mla {
+      margin-left: auto !important;
+    }
+
+    i.online {
+      background-color: royalblue;
+      color: #fff;
+    }
+
+
 
   </style>
 
@@ -95,7 +140,8 @@
     <span class="status">Offline</span>
   </div>
 
-  <div class="contacts">You don't have any contacts.<br>Please provide contacts list when initializing Talaria.</div>
+  <div class="contacts">    
+  </div>
 
   <script>
     var url_protocol = window.location.protocol;
@@ -127,13 +173,64 @@
         rtc_server: rtc_server,
         credentials: cfg.credentials,
         user: cfg.user,
-        ui_mode: 'fullscreen'
+        ui_mode: 'fullscreen',
+        contacts: [
+          {
+            id: 1234,
+            full_name: 'John Doe',
+            avatar_path: 'https://i.pravatar.cc/200'
+          }, {
+            id: 5678,
+            full_name: 'Jane Doe',
+            avatar_path: 'https://picsum.photos/200'
+          }
+        ]
       });
 
       tlr.connect().then(() => {
         $('.status').toggleClass('online', true).html('Online');
       });
+      
+      tlr.on('onlinepresencechanged', () => {
+        $('.contacts').html('');
+  
+        tlr.contacts.list.forEach(contact => {
+          let status = tlr.isUserOnline(contact.username) ? 'online' : 'offline';
+
+          let cont = '' +
+          '<div class="contact">' +
+            '<img src="'+ contact.avatar_path +'"/>' +
+            '<span>' + contact.full_name + '</span>' +
+            '<i class="mla material-icons '+ status +'" data-username="'+ contact.username +'" data-action="performCall">phone</i>' +
+            '<i class="material-icons '+ status +'" data-username="'+ contact.username +'" data-action="openChat">chat</i>' +
+            '<i class="material-icons '+ status +'" data-username="'+ contact.username +'" data-action="startCobrowsing">assistant</i>' +
+          '</div>';
+  
+          $('.contacts').append(cont);
+        });
+      });
     }
+
+    $('.contacts').on('click', 'i', (e) => {
+      let username = $(e.target).attr('data-username');
+      let action = $(e.target).attr('data-action');
+      console.log(username);
+      console.log(action);
+      
+      switch (action) {
+        case 'performCall':
+          tlr.performCall(username);          
+        break;
+
+        case 'openChat':
+          tlr.chat.open([tlr.config.user.username, username]);          
+        break;
+
+        case 'startCobrowsing':
+          tlr.cobrowsing.requestConnection(username);        
+        break;
+      }
+    });
 
     window.addEventListener('storage', (event) => {      
       if (event.key === 'tlr_popup_config' && event.newValue != null) {
