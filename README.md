@@ -10,7 +10,7 @@
 
 Talaria enables you to easily add collaboration and real-time communication features into your website, web application, or mobile app with a few lines of code in no-time.
 
-It consists of audio/video calling, ephemeral chat, screen sharing, and multipoint conferencing with up to four participants. Users outside of your workgroup or organization can be added with one-time access to the current meeting (no account creation or download).
+It consists of audio/video calling, chat, screen sharing, co-browsing, audio/video/screencast messages,and multipoint conferencing with up to four participants. Users outside of your workgroup or organization can be added with one-time access to the current meeting (no account creation or download).
 
 Talaria works in any modern browser on any desktop or mobile device (iOS, Android, Windows, Mac, Linux). We provide a safe, secure, and private (peer-to-peer, end-to-end encrypted, HIPAA, and GDPR compliant) environment.  It can be easily branded and customized to match your product look and feel.
 
