@@ -11,6 +11,10 @@
 </head>
 <body>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     html {
       width: 100%;
       height: 100%;
@@ -21,10 +25,11 @@
       background-color: #f5f5f5;
       width: 100%;
       height: 100%;
+      font-family: 'Roboto', sans-serif;
     }
 
     .header {
-      height: 60px;
+      height: 80px;
       position: fixed;
       top: 0;
       width: 100%;
@@ -35,48 +40,123 @@
       padding: 0 10px;
     }
 
-    .avatar-img {
-      width: 40px;
-      height: 40px;
-      overflow: hidden;
-      border-radius: 50%;
-      display: none;
-      margin-right: 15px;
+    .more-btn {
+      font-size: 30px;
+      padding: 10px;
+      cursor: pointer;
+      color: #444;
     }
 
-    .pop-avatar-icon {
-      padding: 8px;
-      color: #666;
+    .menu {
+      width: 300px;
+      position: fixed;
+      top: 70px;
+      right: 10px;      
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      display: none;      
+    }
+
+    .menu.show-menu {
+      display: block;
+    }
+
+    .menu-connection {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .menu-connection i {
+      margin-right: 10px;
+      color: #ddd
+    }
+
+    .menu-presence, .menu-connection {
+      display: flex;
+      align-items: center;
+      padding: 20px 10px;
+    }
+
+    .menu-presence {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .my-presence-color {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
       background-color: #ddd;
       border-radius: 50%;
-      margin-right: 15px;
-      display: none;
     }
 
-    .user-name {
-      font-family: 'Roboto', sans-serif;
-      font-size: 18px;      
+    .menu-buttons {      
+      padding: 10px 0;
     }
 
-    .status {
-      color: #fff;
+    .menu-btn {
+      color: royalblue;
+      cursor: pointer;
+      padding: 13px;
+    }
+
+    .menu-btn:hover {
+      background-color: #f5f5f5;
+    }
+
+    .menu-btn.disabled {
+      color: #888;
+    }
+    
+    .header .avatar-box,
+    .contact .avatar-box {
+      width: 60px;
+      height: 60px;
+      position: relative;
+      margin-right: 10px;
       display: flex;
       justify-content: center;
-      align-items: center;
-      border-radius: 20px;
-      padding: 10px 15px;
-      background-color: #999;
-      margin-left: auto;
-      font-family: 'Roboto', sans-serif;
+      align-items: center;          
+      border-radius: 50%;
+      background-color: #ccc;
+      cursor: pointer;
     }
 
-    .status.online {
-      background-color: #40ca71;
+    .presence-indicator {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #fff;
+      display: inline-block;
+      background-color: #ddd;
+      border-radius: 50%;
     }
+
+    .avatar-icon {
+      font-size: 40px;
+      color: #fff;      
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;      
+      border-radius: 50%;
+      display: block;      
+    }    
+
+    .user-name {      
+      font-size: 18px;
+      color: #222;      
+    }
+
+    .user-status {
+      font-size: 14px;
+      color: #999;
+    }    
 
     .contacts {
-      padding: 60px;
-      font-family: 'Roboto', sans-serif;
+      padding: 60px;      
       display: flex;
       justify-content: center;
       align-items: center;
@@ -97,16 +177,9 @@
       flex-direction: row;
       background-color: #FFF;
       margin-bottom: 10px;
-    }
+    }    
 
-    .contact img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .contact i {
+    .contact-btn {
       background-color: #ddd;
       color: #333;
       border-radius: 50%;
@@ -115,58 +188,198 @@
       margin-left: 5px;
     }
 
-    .contact span {
-      color: #333;
-      font-size: 18px;      
+    .contact-btn.online {
+      background-color: royalblue;
+      color: #fff;
     }
     
     .mla {
       margin-left: auto !important;
+    }        
+
+    .error-overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0,0,0,0.8);
     }
 
-    i.online {
-      background-color: royalblue;
-      color: #fff;
+    .error-box {
+      background-color: #fff;
+      padding: 40px;
+      position: relative;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
 
+    .error-icon {
+      font-size: 40px;
+      color: rgb(223, 62, 62);
+    }
 
+    .error-close  {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px;
+      font-size: 30px;
+      color: #333;
+      cursor: pointer;
+    }
 
+    .error-message {      
+      font-size: 18px;
+      color: #333;
+    }
   </style>
 
-  <div class="header">    
-    <img class="avatar-img" src="" alt="">
-    <i class="material-icons pop-avatar-icon">person</i>
-    <span class="user-name"></span>
-    <span class="status">Offline</span>
+  <div class="header">
+    <div class="avatar-box">
+      <img onerror="tlr.fixImage(this, 'person')" class="avatar-img" src="" alt="">      
+      <span class="presence-indicator"></span>
+    </div>
+
+    <div class="user-info">
+      <div class="user-name"></div>
+      <div class="user-status"></div>
+    </div>
+
+    <i class="material-icons more-btn mla">more_vert</i>
   </div>
 
-  <div class="contacts">    
+  <div class="menu">
+    <div class="menu-connection">
+      <i class="material-icons">public_off</i>
+      <span>Disconnected</span>
+    </div>
+
+    <div class="menu-presence">
+      <span class="my-presence-color"></span>
+      <span class="my-state-text">Offline</span>
+    </div>
+
+    <div class="menu-buttons">
+      <div id="connect_btn" class="menu-btn" data-action="connect">Connect</div>
+      <div id="update_btn" class="menu-btn disabled" data-action="updatePresence">Update Presence</div>
+    </div>
   </div>
+
+  <div class="contacts"></div>
 
   <script>
-    var url_protocol = window.location.protocol;
-    var url_host = window.location.host;
-    var rtc_server = url_protocol + "//" + url_host;
+    var status_colors = tlr.config.presence_colors;
 
-    console.log('rtc_server', rtc_server);
+    function handleSelfInfo(){
+      console.log(tlr.selfInfo);
+
+      var $avatar_state_color = $('.header .presence-indicator');
+      var $my_status = $('.header .user-status');
+      var $menu_state_color = $('.my-presence-color');
+      var $menu_presence = $('.menu-presence');
+      var $menu_state_text = $('.menu-presence .my-state-text');
+      var $menu_connection_icon = $('.menu-connection i');
+      var $menu_connection_text = $('.menu-connection span');
+      var $connect_btn = $('#connect_btn');
+      var $update_btn = $('#update_btn');
+      
+      var me = tlr.selfInfo;      
+      
+      if (me) {
+        var status_color = me.presence.color;
+
+        $avatar_state_color.css('background', status_color);
+        $my_status.html(me.presence.status);
+        $menu_presence.show();
+        $menu_state_color.css('background', status_color);
+        $menu_state_text.html(me.presence.state);
+        $menu_connection_icon.html('public').css('color', status_colors.chat);
+        $menu_connection_text.html('Connected');
+        $connect_btn.text('Disconnect').attr('data-action', 'disconnect');
+        $update_btn.toggleClass('disabled', false);
+      
+      } else {
+        $avatar_state_color.css('background', status_colors.xa);
+        $my_status.html('');
+        $menu_presence.hide();        
+        $menu_connection_icon.html('public_off').css('color', status_colors.xa);
+        $menu_connection_text.html('Disconnected');
+        $connect_btn.text('Connect').attr('data-action', 'connect');
+        $update_btn.toggleClass('disabled', true);
+      }      
+    }
+
+
+    function handleContacts(){      
+      $('.contacts').empty();      
+
+      tlr.contacts.list.forEach(contact => {        
+        var contactOnline = tlr.getOnlineUser(contact.username);
+
+        var status_color = contactOnline ? contactOnline.presence.color : status_colors.xa;
+        var status = contactOnline ? contactOnline.presence.status : '';
+        var online_status = contactOnline ? 'online' : 'offline';
+
+        var cont = '' +
+        '<div class="contact">' +
+          '<div class="avatar-box">' +
+            '<img onerror="tlr.fixImage(this, \'person\')" class="avatar-img" src="'+ contact.avatar_path +'"/>' +              
+            '<span class="presence-indicator" style="background-color:'+ status_color +'"></span>' +
+          '</div>' +
+          '<div class="user-info">' +
+            '<div class="user-name">' + contact.full_name + '</div>' +
+            '<div class="user-status">' + status + '</div>' +
+          '</div>' +
+          '<i class="contact-btn mla material-icons '+ online_status +'" data-username="'+ contact.username +'" data-action="performCall">phone</i>' +
+          '<i class="contact-btn material-icons '+ online_status +'" data-username="'+ contact.username +'" data-action="openChat">chat</i>' +
+          '<i class="contact-btn material-icons '+ online_status +'" data-username="'+ contact.username +'" data-action="startCobrowsing">assistant</i>' +
+        '</div>';
+
+        $('.contacts').append(cont);
+      });
+    }
+
+
+    function showError(message){
+      var template = '' +
+      '<div class="error-overlay">' +
+        '<div class="error-box">' +
+          '<i class="material-icons error-icon">error</i>' +
+          '<p class="error-message">'+ message +'</p>' +
+          '<i class="material-icons error-close">close</i>' +
+        '</div>' +
+      '</div>';
+
+      $('body').append(template);
+
+      $('.error-close').on('click', hideError);
+    }
+
+
+    function hideError(){
+      $('.error-overlay').remove();
+    }
+
 
     function handleInit(cfg){      
       console.log('### handleInit :', cfg);
 
       if (!cfg.credentials.client_id || !cfg.credentials.client_token) {
-        $('.status').toggleClass('online', false).html('Offline');
-        $('.contacts').html('You did not provide a valid configuration from the main window to the popup.');
-        $('.user-name').html('Error');
+        showError('You did not provide a valid configuration from the main window to the popup.');
         return;
       }
-
-      if (cfg.user.avatar) {
-        $('.avatar-img').attr('src', data.user.avatar);
-      } else {
-        $('.pop-avatar-icon').show();
-      }
-
-      $('.user-name').html(cfg.user.full_name);
+      
+      var url_protocol = window.location.protocol;
+      var url_host = window.location.host;
+      var rtc_server = url_protocol + "//" + url_host;
 
       tlr.init({
         popup: true,
@@ -178,42 +391,49 @@
           {
             id: 1234,
             full_name: 'John Doe',
-            avatar_path: 'https://i.pravatar.cc/200'
+            avatar_path: 'https://i.pravatar.cc/150?img=7'
           }, {
             id: 5678,
             full_name: 'Jane Doe',
-            avatar_path: 'https://picsum.photos/200'
+            avatar_path: 'https://i.pravatar.cc/150?img=9'
           }
         ]
-      });
-
-      tlr.connect().then(() => {
-        $('.status').toggleClass('online', true).html('Online');
-      });
+      });      
       
-      tlr.on('onlinepresencechanged', () => {
-        $('.contacts').html('');
-  
-        tlr.contacts.list.forEach(contact => {
-          let status = tlr.isUserOnline(contact.username) ? 'online' : 'offline';
+      tlr.on('onlinepresencechanged', () => {        
+        handleSelfInfo();
+        handleContacts();        
+      });     
 
-          let cont = '' +
-          '<div class="contact">' +
-            '<img src="'+ contact.avatar_path +'"/>' +
-            '<span>' + contact.full_name + '</span>' +
-            '<i class="mla material-icons '+ status +'" data-username="'+ contact.username +'" data-action="performCall">phone</i>' +
-            '<i class="material-icons '+ status +'" data-username="'+ contact.username +'" data-action="openChat">chat</i>' +
-            '<i class="material-icons '+ status +'" data-username="'+ contact.username +'" data-action="startCobrowsing">assistant</i>' +
-          '</div>';
-  
-          $('.contacts').append(cont);
-        });
-      });
+      tlr.connect();
+
+      $('.avatar-img').attr('src', tlr.config.user.avatar);
+      $('.user-name').html(tlr.config.user.full_name);
     }
 
+
+    $('.menu').on('click', '.menu-btn', (e) => {
+      if ($(e.target).hasClass('disabled')) { return; }
+      var action = $(e.target).attr('data-action');      
+      
+      switch (action) {
+        case 'connect':
+          tlr.connect();          
+        break;
+
+        case 'disconnect':
+          tlr.disconnect();          
+        break;
+
+        case 'updatePresence':
+          tlr.updatePresenceUi();          
+        break;
+      }
+    });
+
     $('.contacts').on('click', 'i', (e) => {
-      let username = $(e.target).attr('data-username');
-      let action = $(e.target).attr('data-action');
+      var username = $(e.target).attr('data-username');
+      var action = $(e.target).attr('data-action');
       console.log(username);
       console.log(action);
       
@@ -230,6 +450,14 @@
           tlr.cobrowsing.requestConnection(username);        
         break;
       }
+    });
+
+    $('.more-btn').on('click', function(){
+      $('.menu').toggleClass('show-menu');
+    });
+
+    $('.avatar-box').on('click', function(){
+      tlr.updatePresenceUi();
     });
 
     window.addEventListener('storage', (event) => {      
@@ -249,7 +477,7 @@
 
     window.addEventListener('load', () => {     
       if (localStorage.getItem('tlr_popup_config')) {
-        let cfg = JSON.parse(localStorage.getItem('tlr_popup_config'));
+        var cfg = JSON.parse(localStorage.getItem('tlr_popup_config'));
         handleInit(cfg);
       } else {
         localStorage.setItem('tlr_popup_opened', true);
