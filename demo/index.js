@@ -2,6 +2,8 @@ var url_protocol = window.location.protocol;
 var url_host = window.location.host;
 var rtc_server = url_protocol + "//" + url_host;
 
+console.log('rtc_server', rtc_server);
+
 var onlineUsers = null;
 
 // ----------------------------------------------
@@ -54,6 +56,17 @@ function infoTemplate(params) {
       "<li>server : " +
       tlr.config.rtc_server +
       "</li>" +
+      "<li style='font-weight:bold; margin: 7px 0px'>Presence</li>" +
+      "<li>code : " +
+      tlr.selfInfo.presence.code +
+      "</li>" +
+      "<li>state : " +
+      tlr.selfInfo.presence.state +
+      "</li>" +
+      "<li>status : " +
+      tlr.selfInfo.presence.status +
+      "</li>" +
+      "<li class='update-presence-btn'>Update presence</li>" +
       "</ul>";
   }
 
@@ -66,7 +79,7 @@ function infoTemplate(params) {
         '<li data-username="' +
         user.username +
         '">' +
-        '<i class="material-icons avatar">person</i>' +
+        '<img src="'+user.avatar+'" class="online-user-avatar" onerror="tlr.fixImage(this, \'person\')"/>' +
         '<span class="name">' +
         user.full_name +
         "</span>" +
@@ -99,7 +112,7 @@ function infoTemplate(params) {
 
   if (params.name === "users_online") {
     $(".tlr-info li").on("click", ".action", function () {
-      var username = $(this).parent().parent().attr("data-username");
+      var username = $(this).parent().parent().attr("data-username");      
 
       if ($(this).hasClass("call-btn")) {
         tlr.performCall(username);
@@ -111,6 +124,12 @@ function infoTemplate(params) {
       }
     });
   }
+
+  if (params.name === "status_connected") {
+    $(".tlr-info .update-presence-btn").on("click", function () {
+      tlr.updatePresenceUi();
+    });
+  }  
 
   $(".tlr-info .close-btn").on("click", function () {
     $(this).parent().parent().remove();
@@ -160,6 +179,7 @@ function openInfo(params) {
 }
 
 function generateToken() {}
+
 
 function updateOnlineStatus(onOff) {
   var $text = $online_status.find(".text");
@@ -218,7 +238,7 @@ $("#connect").on("click", function () {
           error.message,
         autohide: true,
       });
-      });
+    });
   }
 });
 
@@ -417,8 +437,8 @@ $("#media_message_btn").on("click", function () {
     $("#recipient_name").val(recipient_name);
   }
 
-  tlr.recorder.open({
-    full_name: recipient_name,
+  tlr.createMediaMessage({
+    recipient_name: recipient_name
   });
 
   $("#recipient_name").val("");
@@ -443,8 +463,9 @@ $("#screencast_btn").on("click", function () {
     $("#screencast_title").val(title);
   }
 
-  tlr.recorder.createScreencast({
-    title: title,
+  tlr.createMediaMessage({
+    screencast: true,
+    title: title
   });
 
   $("#screencast_title").val("");
@@ -586,6 +607,19 @@ $online_users_btn.on("click", function () {
   openInfo({ name: "users_" + online });
 });
 
+$("#open_popup").on("click", function(e){
+  if (!tlr.connected) {
+    tlr.notify({
+      icon: "warning",
+      icon_color: "red",
+      message: "You are not connected! Please connect and try again.",
+      autohide: true,
+    });
+  } else {
+    tlr.popup.open({ url: '../popup.html' });
+  }
+});
+
 
 
 // ----------------------------------------------
@@ -626,9 +660,9 @@ function config() {
     show_buttons_label = false;
   } else {
     show_buttons_label = false;
-  }
+  }  
 
-  var language = $("#language").val();
+  var language = $("#language").val() || "en";
   var ui_size = $("#ui_size").val();
   var room_name = $("#room_name").val();
   var username_prefix = $("#username_prefix").val();
@@ -693,15 +727,49 @@ function config() {
       id: user_id,
       full_name: full_name,
     },
+    avatar_path: 'https://i.pravatar.cc/150?img={id}',
     credentials: credentials,
     //using i18n keys you can override any UI copy from tlr-client/app/langs/en.js language file
     i18n: {
       processing_message: "Processing your message, please wait...",
-      message_uploaded:
-        "Your message is ready, here is the message link that you can send to the message recipient.",
+      message_uploaded: "Your message is ready, here is the message link that you can send to the message recipient.",
     },
-    preserve_chat_conversations_in_local_storage: false,
-    chat_message_getter: getChatMessages,
+    // You will need that if you want to
+    // to save chat messages on your server
+    // chat_message_getter: getChatMessages,
+    contacts: [
+      {
+        id: '0001',
+        full_name: 'Justin Shaw'
+      }, {
+        id: '0002',
+        full_name: 'Oscar Walker'
+      }, {
+        id: '0003',
+        full_name: 'William McKnight'
+      }, {
+        id: '0004',
+        full_name: 'Joseph Watson'
+      }, {
+        id: '0005',
+        full_name: 'Anthony Harris'
+      }, {
+        id: '0006',
+        full_name: 'Martha Taylor'
+      }, {
+        id: '0007',
+        full_name: 'Krista Martin'
+      }, {
+        id: '0008',
+        full_name: 'Carolyn Goldberg'
+      }, {
+        id: '0009',
+        full_name: 'Tracie Amon'
+      }, {
+        id: '0010',
+        full_name: 'Elicia White'
+      }
+    ]
   });
 
   return true;
@@ -715,6 +783,10 @@ tlr.on("onlinepresencechanged", function (_onlineUsers) {
     var online = onlineUsers && onlineUsers.length ? "online" : "empty";
     openInfo({ name: "users_" + online });
   }
+
+  if ($("#status_connected").length > 0) {
+    $("#status_connected").remove();
+  }
 });
 
 tlr.on("connected", function (_onlineUsers) {
@@ -724,24 +796,35 @@ tlr.on("connected", function (_onlineUsers) {
 tlr.on("disconnected", function (_onlineUsers) {
   updateOnlineStatus(false);
 });
+ 
+/*
+// Example of saving chat messages on your server
 
 tlr.on("chatmessage", function (message) {
-  message.participants = message.participants.join();
+  var _message = {
+    participants: message.participants.join(),
+    created_at: message.created_at,
+    created_by: message.created_by
+  };
 
   if (message.file) {
-    message.file = JSON.stringify(message.file);
+    _message.file = JSON.stringify(message.file);
+  }
+
+  if (message.text) {
+    _message.text = message.text;
   }
 
   let data = {
-    client_id: $("#client_id").val(),    
-    message: message,
+    message: _message,
+    client_id: tlr.config.credentials.client_id    
   };
 
   if ($("#auth_token").val()) {
     data.auth_token = $("#auth_token").val();
   } else {
     data.client_token = $("#client_token").val();
-  }  
+  }    
 
   $.ajax({
     type: "POST",
@@ -777,8 +860,9 @@ function getChatMessages(participants) {
     });
   });
 }
+*/
 
-tlr.init({});
+tlr.init();
 
 function saveCredentialsInLS() {
   localStorage.setItem("user_id", $("#user_id").val());
