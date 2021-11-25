@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">  
   <link rel="icon" type="image/png" sizes="64x64"  href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABBVJREFUeNrsW01oE0EUno0Fgz0YkaIoSKIgKmLSQ0EvbXKsl1YQWi8mOXoqvXlKSM5K6KnHJKdSKCS52IuQtB4sWMhGMFYRjYJ/lNJ4qEQo6Lw4xc1kNvuT7O5M1gePDdNms++b7/3NzkjIYknMbYbxBTSI1Y81pPEVGWsDaw1rJb06WbHy+SQLDPbhyyzWGXIdhBSxluCKAWlyCQA2HGZ2AWvMYlLlsOYHxQxpQBRPEprbKQBAql8gpD6pnrFhxvUwYtGsa0gmjQffzmL1IT4EjI9jEIqWA4CNz3Iw66pswCDELQGAUL6sI405LZBGI3pdQhoy4w2DIOk0/gNH/m4kLoxjEBq9/smjc+ZFMx6RZy4QG8wBIBjtWRIiNhh3AVa0P+sfRd4TI9xb3aj/0J0dpB55vkCPxxM3kP/aSe4BqKx9QuW1j/TwHVad4FHx+6zAtEfhuxfQlYnT9HCWFQ9YMSAjaNDrnO4Hl5FvzEsHxUxPAEhjEzPgW9wKxCoAgZIYsVGVAcleN93fbQnFAohXoakzqJeNHsbKjarsbO+h1s9DoUCYjl5E3tGOzBUmaxddDIhq3ax1cIi2nnwRCgBwhVvT5+nhhQ4ASHTU1eFBehEpFoDcvH2OFQt8SgYYWrtbeVxH8sZ3oVjAiAWzSgBmjNwQXKGw/BZl0y+FiQtXu+uCts0jZhigTIuiuQPNAIlE/zJyp0Q8yP7VXK6qZnCBoJ2/6HRHSblsEJ7Eb2thcv+Sox1lcv5ZR7HoEXzBw7BQDVLI4zan940d12yHXSW2A9DkrKO0HYAqZyW07QDwVj06EgOgj+Clf3AEAIgD0Eg5EQ+au7+6AJCdAOFb4wAtP6y2l7DtBIL6LRkqwYZTxRC01bDAAgoFCp2j7QhJAEANDW4zU18z44BL1MAFKi6ugyrtV2OJuc3fbrQ+vTopHfWlRR7coJdABwnvJs0KLN2tPKorh4rKNFga9tl+/WKPHiopASgOs/FQdDFWsf8xgOylyfFsBF3AGBHGy5zc0f4hZSW4xDcALVPlM3zn+fpnejjfVQpjRGTeU+JOtx9rynr+fbvgUqY+5fZauhdI8QwAYyY1O0+G76dUmyGCDLexAPoH6B30Uh+6TobvV7S6wUX0d48dlwJ9w5YOJoDxVGndJLZ1yDF6YONVtjV1Pf4Gf5znFYR3tf02vU+1Gyhvd32LWbL99Cs9fI/EuQ4xtE2OR2F1kX1vk1OAUEXivzeQsfHjan/UWhGKOLVgMijjiQ2qomeztB9fgAkibpYOaO0Y11wTJLutA4IxQdZjvC4GKJjg3gMTAmUH647MUCAMzaEpU+8FyA8FOCmbc8TfTa1p/D84OainIUBEkT1HZ5dYZa2jAFDZwn2HpzWYAcrl8fk/AgwALwul9z7tfHgAAAAASUVORK5CYII=">  
-  <script src="./client/v1/tlr-client.js"></script>
+  <script src="https://cdn.talaria.solutions/client/v1/tlr-client.js"></script>
 </head>
 <body>
   <style>
@@ -28,7 +28,7 @@
       font-family: 'Roboto', sans-serif;
     }
 
-    .header {
+    .myself {
       height: 80px;
       position: fixed;
       top: 0;
@@ -40,76 +40,8 @@
       padding: 0 10px;
       z-index: 100;
     }
-
-    .more-btn {
-      font-size: 30px;
-      padding: 10px;
-      cursor: pointer;
-      color: #444;
-    }
-
-    .menu {
-      width: 300px;
-      position: fixed;
-      top: 70px;
-      right: 10px;      
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      display: none;
-      z-index: 110;      
-    }
-
-    .menu.show-menu {
-      display: block;
-    }
-
-    .menu-connection {
-      border-bottom: 1px solid #ccc;
-    }
-
-    .menu-connection i {
-      margin-right: 10px;
-      color: #ddd
-    }
-
-    .menu-presence, .menu-connection {
-      display: flex;
-      align-items: center;
-      padding: 20px 10px;
-    }
-
-    .menu-presence {
-      border-bottom: 1px solid #ccc;
-    }
-
-    .my-presence-color {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
-      background-color: #ddd;
-      border-radius: 50%;
-    }
-
-    .menu-buttons {      
-      padding: 10px 0;
-    }
-
-    .menu-btn {
-      color: royalblue;
-      cursor: pointer;
-      padding: 13px;
-    }
-
-    .menu-btn:hover {
-      background-color: #f5f5f5;
-    }
-
-    .menu-btn.disabled {
-      color: #888;
-    }
     
-    .header .avatar-box,
+    .myself .self-avatar-box,
     .contact .avatar-box {
       width: 60px;
       height: 60px;
@@ -124,7 +56,7 @@
       flex-shrink: 0;
     }
 
-    .presence-indicator {
+    .presence-indicator, .self-state {
       position: absolute;
       top: -4px;
       right: -4px;
@@ -148,12 +80,12 @@
       display: block;      
     }    
 
-    .user-name {      
+    .user-name, .self-name {      
       font-size: 18px;
       color: #222;      
     }
 
-    .user-status {
+    .user-status, .self-status {
       font-size: 14px;
       color: #999;
     }    
@@ -188,88 +120,25 @@
       margin-left: 5px;
     }
 
-    .contact-btn.online {
+    .contact.online .contact-btn {
       background-color: royalblue;
       color: #fff;
     }
     
     .mla {
       margin-left: auto !important;
-    }        
-
-    .error-overlay {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(0,0,0,0.8);
-    }
-
-    .error-box {
-      background-color: #fff;
-      padding: 40px;
-      position: relative;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    .error-icon {
-      font-size: 40px;
-      color: rgb(223, 62, 62);
-    }
-
-    .error-close  {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 10px;
-      font-size: 30px;
-      color: #333;
-      cursor: pointer;
-    }
-
-    .error-message {      
-      font-size: 18px;
-      color: #333;
     }
   </style>
 
-  <div class="header">
-    <div class="avatar-box">      
-      <span class="presence-indicator"></span>
+  <div class="myself">
+    <div class="self-avatar-box">      
+      <span class="self-state"></span>
     </div>
 
-    <div class="user-info">
-      <div class="user-name"></div>
-      <div class="user-status"></div>
-    </div>
-
-    <i class="material-icons more-btn mla">more_vert</i>
-  </div>
-
-  <div class="menu">
-    <div class="menu-connection">
-      <i class="material-icons">public_off</i>
-      <span>Disconnected</span>
-    </div>
-
-    <div class="menu-presence">
-      <span class="my-presence-color"></span>
-      <span class="my-state-text">Offline</span>
-    </div>
-
-    <div class="menu-buttons">
-      <div id="connect_btn" class="menu-btn" data-action="connect">Connect</div>
-      <div id="update_btn" class="menu-btn disabled" data-action="updatePresence">Update Presence</div>
-    </div>
+    <div class="self-user-info">
+      <div class="self-name"></div>
+      <div class="self-status"></div>
+    </div>    
   </div>
 
   <div class="contacts"></div>
@@ -277,100 +146,99 @@
   <script>
     var status_colors = tlr.config.presence_colors;
 
-    function handleSelfInfo(){
-      var $avatar_state_color = $('.header .presence-indicator');
-      var $my_status = $('.header .user-status');
-      var $menu_state_color = $('.my-presence-color');
-      var $menu_presence = $('.menu-presence');
-      var $menu_state_text = $('.menu-presence .my-state-text');
-      var $menu_connection_icon = $('.menu-connection i');
-      var $menu_connection_text = $('.menu-connection span');
-      var $connect_btn = $('#connect_btn');
-      var $update_btn = $('#update_btn');
+    
+    function attachSelf() {
+      var $avatar_box = $('.self-avatar-box');
+      var img = '<img onerror="tlr.fixImage(this, \'person\')" class="avatar-img" src="'+ tlr.config.user.avatar +'">';
+      $avatar_box.prepend(img);
       
-      var me = tlr.selfInfo;      
-      
-      if (me) {
-        var status_color = me.presence.color;
+      $('.self-name').html(tlr.config.user.full_name);      
+    }
 
-        $avatar_state_color.css('background', status_color);
-        $my_status.html(me.presence.status);
-        $menu_presence.show();
-        $menu_state_color.css('background', status_color);
-        $menu_state_text.html(me.presence.state);
-        $menu_connection_icon.html('public').css('color', status_colors.chat);
-        $menu_connection_text.html('Connected');
-        $connect_btn.text('Disconnect').attr('data-action', 'disconnect');
-        $update_btn.toggleClass('disabled', false);
-      
-      } else {
-        $avatar_state_color.css('background', status_colors.xa);
-        $my_status.html('');
-        $menu_presence.hide();        
-        $menu_connection_icon.html('public_off').css('color', status_colors.xa);
-        $menu_connection_text.html('Disconnected');
-        $connect_btn.text('Connect').attr('data-action', 'connect');
-        $update_btn.toggleClass('disabled', true);
-      }      
+    var $self_status = $('.self-status');
+    var $self_state = $('.self-state');
+    
+    function updateSelf() {
+      if (tlr.selfInfo) {
+        $self_state.css('background-color', tlr.selfInfo.presence.color);
+        $self_status.html(tlr.selfInfo.presence.status);
+      } else {        
+        $self_state.css('background-color', tlr.config.presence_colors.xa);
+        $self_status.html('');
+      }
     }
 
 
-    function handleContacts(){      
-      $('.contacts').empty();      
-
-      tlr.contacts.list.forEach(contact => {        
-        var contactOnline = tlr.getOnlineUser(contact.username);
-
-        var status_color = contactOnline ? contactOnline.presence.color : status_colors.xa;
-        var status = contactOnline ? contactOnline.presence.status : '';
-        var online_status = contactOnline ? 'online' : 'offline';
-
-        var cont = '' +
-        '<div class="contact">' +
-          '<div class="avatar-box">' +
-            '<img onerror="tlr.fixImage(this, \'person\')" class="avatar-img" src="'+ contact.avatar +'"/>' +              
-            '<span class="presence-indicator" style="background-color:'+ status_color +'"></span>' +
-          '</div>' +
-          '<div class="user-info">' +
-            '<div class="user-name">' + contact.full_name + '</div>' +
-            '<div class="user-status">' + status + '</div>' +
-          '</div>' +
-          '<i class="contact-btn mla material-icons '+ online_status +'" data-username="'+ contact.username +'" data-action="performCall">phone</i>' +
-          '<i class="contact-btn material-icons '+ online_status +'" data-username="'+ contact.username +'" data-action="openChat">chat</i>' +
-          '<i class="contact-btn material-icons '+ online_status +'" data-username="'+ contact.username +'" data-action="startCobrowsing">assistant</i>' +
-        '</div>';
-
-        $('.contacts').append(cont);
+    function attachContacts() {
+      tlr.contacts.list.forEach(function(contact){
+        addContact(contact);
       });
     }
 
-    
-    $('.menu').on('click', '.menu-btn', (e) => {
-      if ($(e.target).hasClass('disabled')) { return; }
-      var action = $(e.target).attr('data-action');      
-      
-      switch (action) {
-        case 'connect':
-          tlr.connect();          
-        break;
 
-        case 'disconnect':
-          tlr.disconnect();          
-        break;
+    function updateContacts() {
+      tlr.contacts.list.forEach(function(contact){
+        updateContact(contact.username);
+      });
+    }
 
-        case 'updatePresence':
-          tlr.updatePresenceUi();          
-        break;
+
+    function updateContact(username){
+      var $contact = $('.contact[data-username="'+username+'"]');
+      var $state = $contact.find('.presence-indicator');
+      var $status = $contact.find('.user-status');
+
+      var online = tlr.getOnlineUser(username);
+
+      if (online) {
+        $state.css('background-color', online.presence.color);
+        $status.html(online.presence.status);
+        $contact.toggleClass('online', true);
+
+      } else {
+        $state.css('background-color', status_colors.xa);
+        $status.html('');
+        $contact.toggleClass('online', false);
       }
-    });
+    } 
+
+
+    function addContact(contact, prepend){
+      var cont = '' +
+      '<div class="contact" data-username="'+ contact.username +'">' +
+        '<div class="avatar-box">' +
+          '<img onerror="tlr.fixImage(this, \'person\')" class="avatar-img" src="'+ contact.avatar +'"/>' +              
+          '<span class="presence-indicator" style="background-color:'+ status_colors.xa +'"></span>' +
+        '</div>' +
+        '<div class="user-info">' +
+          '<div class="user-name">' + contact.full_name + '</div>' +
+          '<div class="user-status"></div>' +
+        '</div>' +
+        '<i class="contact-btn mla material-icons" data-action="performCall">phone</i>' +
+        '<i class="contact-btn material-icons" data-action="openChat">chat</i>' +
+        '<i class="contact-btn material-icons" data-action="startCobrowsing">assistant</i>' +
+      '</div>';
+      
+      if (prepend === 'prepend') {
+        $('.contacts').prepend(cont);
+        
+      } else {
+        $('.contacts').append(cont);
+      }
+    }
+
 
     $('.contacts').on('click', 'i', (e) => {
-      var username = $(e.target).attr('data-username');
+      var $btn = $(e.target);
+
+      if (!$btn.parent().hasClass('online')) { return; }
+
+      var username = $(e.target).parent().attr('data-username');
       var action = $(e.target).attr('data-action');      
       
       switch (action) {
         case 'performCall':
-          tlr.performCall(username);          
+          tlr.performCall(username);
         break;
 
         case 'openChat':
@@ -383,36 +251,38 @@
       }
     });
 
-    $('.more-btn').on('click', function(){
-      $('.menu').toggleClass('show-menu');
-    });
 
-    $('.avatar-box').on('click', function(){
+    $('.self-avatar-box').on('click', function(){
       tlr.updatePresenceUi();
     });
 
+    /*
+    -----------------------------------
+    TALARIA CONFIGURATION FOR THE POPUP
+    -----------------------------------
+    */
+
+    tlr.init('popup');    
     
-    window.addEventListener('load', (event) => {
-      tlr.init('popup');
 
-      tlr.on('connected', () => {
-        var $avatar_box = $('.avatar-box');
-        var $avatar_img = $avatar_box.find('img');
-        var $avatar_icon = $avatar_box.find('i');
-
-        if (!$avatar_img.length && !$avatar_icon.length) {
-          var img = '<img onerror="tlr.fixImage(this, \'person\')" class="avatar-img" src="'+ tlr.config.user.avatar +'">';
-          $avatar_box.prepend(img);
-        }      
-        
-        $('.user-name').html(tlr.config.user.full_name);        
-      });
-
-      tlr.on('onlinepresencechanged', () => {        
-        handleSelfInfo();
-        handleContacts();        
-      });
+    tlr.on('onlinepresencechanged', () => {      
+      updateSelf();        
+      updateContacts();      
     });
+
+
+    tlr.on('contactadded', function(contact){
+      addContact(contact, 'prepend');
+      updateContact(contact.username);
+    });
+
+
+    tlr.on('contactremoved', function(contact){      
+      $('.contact[data-username="'+contact.username+'"]').remove();
+    });
+    
+    attachSelf();
+    attachContacts();
   </script>
 </body>
 </html>
