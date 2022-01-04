@@ -223,10 +223,13 @@ $("#connect").on("click", function () {
       return false;
     }
 
-    tlr.connect().then(function () {
+    tlr.connect().then(function(){
       saveCredentialsInLS();
+    
     }).catch(function (error) {      
       updateOnlineStatus(false);
+
+      console.log('### CONNECT : ERROR :', error);
 
       tlr.notify({
         icon: "warning",
@@ -616,15 +619,53 @@ $("#open_popup").on("click", function(e){
       autohide: true,
     });
   } else {
-    tlr.popup.open({ url: '../popup.html' });
+    tlr.popup.open();
   }
 });
 
+$("#open_confrooms_recordings").on("click", function () {
+  if (!tlr.connected) {
+    tlr.notify({
+      icon: "warning",
+      icon_color: "red",
+      message:
+        "You need to be connected in order to view list of conference rooms recordings.",
+      autohide: true,
+    });
+  } else {
+    tlr.confRoom.openRecordings();
+  }
+});
 
 
 // ----------------------------------------------
 // TALARIA
 // ----------------------------------------------
+
+function getTalariaToken(){
+  console.log('# getTalariaToken : START');
+  return new Promise((resolve, reject) => {
+    $.post(
+      "/api/auth/",
+      {
+        client_id: $('#client_id').val(),        
+        client_token: $('#client_token').val(),
+      },
+      function (data, status, xhr) {
+        var res_obj = JSON.parse(data);
+        console.log('# getTalariaToken : END : ', res_obj);        
+
+        if (!res_obj.success) {
+          reject(res_obj.error);
+        } else {          
+          resolve(res_obj.data.auth_token);
+        }
+      }, function(err){
+        console.log('# getTalariaToken : ERROR :', err);
+      }
+    );
+  });
+}
 
 function config() {
   $("#config_and_connect input").each(function (i, el) {
@@ -652,6 +693,16 @@ function config() {
     single_incoming_call_only = false;
   }
 
+  var call_to_conf = $("#call_to_conf").val();
+
+  if (call_to_conf === "false") {
+    call_to_conf = false;
+  } else if (call_to_conf === "true") {
+    call_to_conf = true;
+  } else {
+    call_to_conf = true;
+  }
+
   var show_buttons_label = $("#show_buttons_label").val();
 
   if (show_buttons_label === "true") {
@@ -670,21 +721,19 @@ function config() {
   var full_name = $("#full_name").val();
   var client_id = $("#client_id").val();
   var client_token = $("#client_token").val();
-  var auth_token = $("#auth_token").val();
+  var auth_token = null;  
 
-  var credentials;
+  var credentials = {
+    client_id: client_id
+  };  
 
-  if (auth_token !== "") {
-    credentials = {
-      client_id: client_id,
-      auth_token: auth_token,
-    };
+  if ($("#auth_token").val() !== '') {
+    credentials.auth_token = $("#auth_token").val();
   } else {
-    credentials = {
-      client_id: client_id,
-      client_token: client_token,
-    };
+    credentials.client_token = client_token;
   }
+  
+  console.log(credentials);
 
   var has_errors = false;
 
@@ -711,7 +760,7 @@ function config() {
 
   if (has_errors) {
     return false;
-  }
+  }  
 
   tlr.configure({
     room_name: room_name,
@@ -721,6 +770,7 @@ function config() {
     ui_mode: ui_mode,
     start_call_with_cam: start_call_with_cam,
     single_incoming_call_only: single_incoming_call_only,
+    call_to_room_transition: call_to_conf,
     rtc_server: rtc_server,
     user: {
       username_prefix: username_prefix,
@@ -769,8 +819,13 @@ function config() {
         id: '0010',
         full_name: 'Elicia White'
       }
-    ]
+    ],
+    getFreshAuthToken: getTalariaToken
   });
+
+  if (tlr.config.credentials.hasOwnProperty('auth_token') && tlr.config.credentials.hasOwnProperty('client_token')) {
+    delete tlr.config.credentials.client_token;
+  }
 
   return true;
 }
@@ -796,6 +851,13 @@ tlr.on("connected", function (_onlineUsers) {
 tlr.on("disconnected", function (_onlineUsers) {
   updateOnlineStatus(false);
 });
+
+/*
+tlr.on("popupclosed", function(){
+  // this will prevent reconnection in main window
+  tlr.popup.preventReconnect();
+});
+*/
  
 /*
 // Example of saving chat messages on your server
