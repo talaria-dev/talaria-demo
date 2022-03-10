@@ -719,6 +719,7 @@ function config() {
   var username_prefix = $("#username_prefix").val();
   var user_id = $("#user_id").val();
   var full_name = $("#full_name").val();
+  var user_email = $("#user_email").val();
   var client_id = $("#client_id").val();
   var client_token = $("#client_token").val();
   var auth_token = null;  
@@ -773,6 +774,7 @@ function config() {
     call_to_room_transition: call_to_conf,
     rtc_server: rtc_server,
     user: {
+      email: user_email || null,
       username_prefix: username_prefix,
       id: user_id,
       full_name: full_name,

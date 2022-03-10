@@ -39,7 +39,7 @@ INFO
 */
 
 .tlr-info {
-  width: 300px;
+  width: 360px;
   height: auto;  
   border-radius: 15px;
   box-shadow: 0 7px 20px rgba(0,0,0,0.2);
@@ -88,6 +88,16 @@ INFO
   padding: 7px 0px;
 }
 
+.update-presence-btn {
+  background-color: #7e57c2;
+  color: #fff;
+  padding: 10px 15px !important;
+  margin-top: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
 
 /* ONLINE USERS */
 
@@ -107,13 +117,22 @@ INFO
   border-bottom: none;
 }
 
-.tlr-info .users-list li .avatar {  
-  /* font-size: 30px; */
-  padding: 7px;
-  color: #999;
+.tlr-info .users-list li .online-user-avatar {
+  color: #666;  
   background-color: #DDD;
-  border-radius: 100px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
   margin-right: 10px;
+}
+
+.tlr-info .users-list li .avatar-icon {
+  font-size: 30px;
+  color: #999;
+  margin-right: 10px;
+  background: #ddd;
+  padding: 10px;
+  border-radius: 50%;
 }
 
 .tlr-info .users-list li .name {
@@ -153,7 +172,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #FFF;
+  background-color: #fff;
   display: flex;
   align-items: center;
   height: 72px;  
@@ -161,16 +180,29 @@ header {
   box-shadow: 0 0 1px rgba(0,0,0,0.3);
 }
 
+header.custom {
+  background-color: #222;
+}
+
 header img {
   display: none;
-  margin-right: 20px;
+  margin-right: 20px;  
+}
+
+header.custom img {
+  height: auto;
+  max-width: 130px;
 }
 
 header h1 {
   font-weight: 400;
   font-size: 25px;
   margin: 0;
-  margin-top: 3px;
+  margin-top: 3px;  
+}
+
+header.custom h1 {
+  color: #fff;
 }
 
 .tlr-status {
@@ -292,7 +324,7 @@ BUTTON
 -------------------------------------------------
 */
 
-button {
+button, .button {
   border: none;
   box-shadow: none;
   border-radius: 100px;
@@ -302,7 +334,13 @@ button {
   font-weight: 500;
   padding: 12px;
   outline: none;
-  cursor: pointer;  
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;  
+}
+
+button a {
+  color: #FFF;
 }
 
 button.red {
@@ -349,7 +387,8 @@ label span {
   color: #666;
 }
 
-.tlr-card button {
+.tlr-card button,
+.tlr-card .button {
   width: 240px;
   margin: 25px auto;
   display: block;
