@@ -112,19 +112,19 @@
       margin-bottom: 10px;
     }
 
-    .contact .tooltiptext.online {
+    .contact .tlr-tooltiptext.online {
       display: none;
     }
 
-    .contact .tooltiptext.offline {
+    .contact .tlr-tooltiptext.offline {
       display: block;
     }
     
-    .contact.online .tooltiptext.online {
+    .contact.online .tlr-tooltiptext.online {
       display: block;
     }
 
-    .contact.online .tooltiptext.offline {
+    .contact.online .tlr-tooltiptext.offline {
       display: none;
     }
 
@@ -146,11 +146,11 @@
       margin-left: auto !important;
     }
 
-    .tooltip {
+    .tlr-tooltip {
       position: relative;
     }
 
-    .tooltip .tooltiptext {
+    .tlr-tooltip .tlr-tooltiptext {
       visibility: hidden;
       width: 130px;
       background-color: #555;
@@ -168,13 +168,13 @@
       display: inline-block;
     }
 
-    .tooltip.self-avatar-box .tooltiptext {
+    .tlr-tooltip.self-avatar-box .tlr-tooltiptext {
       left: 100%;
       bottom: -91%;
       margin-left: -66px;
     }
 
-    .tooltip .tooltiptext::after {
+    .tlr-tooltip .tlr-tooltiptext::after {
       content: "";
       position: absolute;
       top: 100%;
@@ -185,22 +185,22 @@
       border-color: #555 transparent transparent transparent;
     }
 
-    .tooltip.self-avatar-box .tooltiptext::after {
+    .tlr-tooltip.self-avatar-box .tlr-tooltiptext::after {
       top: -10px;
       left: 28%;
       transform: rotate(180deg);
     }
 
-    .tooltip:hover .tooltiptext {
+    .tlr-tooltip:hover .tlr-tooltiptext {
       visibility: visible;
       opacity: 1;
     }
   </style>
 
   <div class="myself">
-    <div class="self-avatar-box tooltip">      
+    <div class="self-avatar-box tlr-tooltip">      
       <span class="self-state"></span>
-      <span class="tooltiptext">Change your presence</span>
+      <span class="tlr-tooltiptext">Change your presence</span>
     </div>
 
     <div class="self-user-info">
@@ -282,20 +282,20 @@
           '<div class="user-name">' + contact.full_name + '</div>' +
           '<div class="user-status"></div>' +
         '</div>' +
-        '<div class="tooltip mla">' +
+        '<div class="tlr-tooltip mla">' +
           '<i class="contact-btn material-icons" data-action="performCall">phone</i>' +
-          '<span class="tooltiptext online">Perform call</span>' +          
-          '<span class="tooltiptext offline">User not available at the moment</span>' +
+          '<span class="tlr-tooltiptext online">Perform call</span>' +          
+          '<span class="tlr-tooltiptext offline">User not available at the moment</span>' +
         '</div>' +
-        '<div class="tooltip">' +
+        '<div class="tlr-tooltip">' +
           '<i class="contact-btn material-icons" data-action="openChat">chat</i>' +
-          '<span class="tooltiptext online">Start chat</span>' +
-          '<span class="tooltiptext offline">User not available at the moment</span>' +
+          '<span class="tlr-tooltiptext online">Start chat</span>' +
+          '<span class="tlr-tooltiptext offline">User not available at the moment</span>' +
         '</div>' +
-        '<div class="tooltip">' +
+        '<div class="tlr-tooltip">' +
           '<i class="contact-btn material-icons" data-action="startCobrowsing">assistant</i>' +
-          '<span class="tooltiptext online">Start cobrowsing</span>' +
-          '<span class="tooltiptext offline">User not available at the moment</span>' +
+          '<span class="tlr-tooltiptext online">Start cobrowsing</span>' +
+          '<span class="tlr-tooltiptext offline">User not available at the moment</span>' +
         '</div>' +
       '</div>';
       
