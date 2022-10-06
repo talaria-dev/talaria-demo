@@ -133,7 +133,7 @@ function connect(){
 
       tlr.init(tlr_config);
 
-      $('#inviter_status').html('is currently not online. Please check back latter!');
+      $('#inviter_status').html('is not online at the moment. Please check back later!');
       $('#quick_call').removeAttr("disabled");
       
       tlr.on('onlinepresencechanged', function(onlineUsers){
