@@ -145,10 +145,10 @@ function connect(){
         }
 
         if (is_inviter_online) {
-          $('#inviter_status').html('is currently online, and you can place call by clicking the button bellow!');
+          $('#inviter_status').html('is currently online, and you can place the call by clicking the button bellow!');
           $('#quick_call').removeAttr("disabled");
         } else {
-          $('#inviter_status').html('is currently not online. Please check back latter!');
+          $('#inviter_status').html('is not online at the moment. Please check back later!');
           $('#quick_call').attr("disabled","disabled");
         }
       });      
