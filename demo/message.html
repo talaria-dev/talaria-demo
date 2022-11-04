@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" sizes="64x64"  href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABBVJREFUeNrsW01oE0EUno0Fgz0YkaIoSKIgKmLSQ0EvbXKsl1YQWi8mOXoqvXlKSM5K6KnHJKdSKCS52IuQtB4sWMhGMFYRjYJ/lNJ4qEQo6Lw4xc1kNvuT7O5M1gePDdNms++b7/3NzkjIYknMbYbxBTSI1Y81pPEVGWsDaw1rJb06WbHy+SQLDPbhyyzWGXIdhBSxluCKAWlyCQA2HGZ2AWvMYlLlsOYHxQxpQBRPEprbKQBAql8gpD6pnrFhxvUwYtGsa0gmjQffzmL1IT4EjI9jEIqWA4CNz3Iw66pswCDELQGAUL6sI405LZBGI3pdQhoy4w2DIOk0/gNH/m4kLoxjEBq9/smjc+ZFMx6RZy4QG8wBIBjtWRIiNhh3AVa0P+sfRd4TI9xb3aj/0J0dpB55vkCPxxM3kP/aSe4BqKx9QuW1j/TwHVad4FHx+6zAtEfhuxfQlYnT9HCWFQ9YMSAjaNDrnO4Hl5FvzEsHxUxPAEhjEzPgW9wKxCoAgZIYsVGVAcleN93fbQnFAohXoakzqJeNHsbKjarsbO+h1s9DoUCYjl5E3tGOzBUmaxddDIhq3ax1cIi2nnwRCgBwhVvT5+nhhQ4ASHTU1eFBehEpFoDcvH2OFQt8SgYYWrtbeVxH8sZ3oVjAiAWzSgBmjNwQXKGw/BZl0y+FiQtXu+uCts0jZhigTIuiuQPNAIlE/zJyp0Q8yP7VXK6qZnCBoJ2/6HRHSblsEJ7Eb2thcv+Sox1lcv5ZR7HoEXzBw7BQDVLI4zan940d12yHXSW2A9DkrKO0HYAqZyW07QDwVj06EgOgj+Clf3AEAIgD0Eg5EQ+au7+6AJCdAOFb4wAtP6y2l7DtBIL6LRkqwYZTxRC01bDAAgoFCp2j7QhJAEANDW4zU18z44BL1MAFKi6ugyrtV2OJuc3fbrQ+vTopHfWlRR7coJdABwnvJs0KLN2tPKorh4rKNFga9tl+/WKPHiopASgOs/FQdDFWsf8xgOylyfFsBF3AGBHGy5zc0f4hZSW4xDcALVPlM3zn+fpnejjfVQpjRGTeU+JOtx9rynr+fbvgUqY+5fZauhdI8QwAYyY1O0+G76dUmyGCDLexAPoH6B30Uh+6TobvV7S6wUX0d48dlwJ9w5YOJoDxVGndJLZ1yDF6YONVtjV1Pf4Gf5znFYR3tf02vU+1Gyhvd32LWbL99Cs9fI/EuQ4xtE2OR2F1kX1vk1OAUEXivzeQsfHjan/UWhGKOLVgMijjiQ2qomeztB9fgAkibpYOaO0Y11wTJLutA4IxQdZjvC4GKJjg3gMTAmUH647MUCAMzaEpU+8FyA8FOCmbc8TfTa1p/D84OainIUBEkT1HZ5dYZa2jAFDZwn2HpzWYAcrl8fk/AgwALwul9z7tfHgAAAAASUVORK5CYII="> 
 
   <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
-  <!-- <script src="../client/v1/tlr-client.js"></script> -->
+  <!--<script src="../client/v1/tlr-client.js"></script>--> 
   <script src="https://cdn.talaria.solutions/client/v1/tlr-client.js"></script>
 </head>
 <body>
@@ -80,20 +80,15 @@ $("header").css("opacity", 0);
 
 function init(){
   var url_string = location.href;
-  var url = new URL(url_string);
-  var message_id = url.searchParams.get("message_id");
-  console.log("message_id="+message_id);
-  
-  var base_url = location.protocol+ '//'+ location.host+ '/uploads/message-'+ message_id;
-
-  var mp4_file_url = base_url+ '.' + 'mp4';
-  var webm_file_url = base_url+ '.' +'webm';
-  
-  $('video').append('' + 
-    '<source src="'+ mp4_file_url+ '" type="video/mp4" />' +
-    '<source src="'+ webm_file_url+ '" type="video/webm" />'
-  );
-
+    var url = new URL(url_string);
+    var message_id = url.searchParams.get("message_id");
+    console.log("message_id="+message_id);
+    var rtc_server= location.protocol+ '//'+ location.host;
+    tlr.configure({
+      rtc_server: rtc_server
+    });
+    console.log("rtc_server="+rtc_server);
+      
   tlr.services.getMediaMessageInfo(message_id).then((res) => {
     console.log(res);
     var expiration_time= res.expiration_time;
@@ -101,6 +96,25 @@ function init(){
     var title = res.title;
     var exp_localtime= new Date(res.expiration_time).toString().split(" GMT")[0];
     var sent_localtime= new Date(res.created_at).toString().split(" GMT")[0];
+    var access_url = res.access_url;
+    
+    if(access_url && access_url!=""){
+      var mp4_file_url = access_url+ '/message-'+ message_id+ '.' + 'mp4';
+      var webm_file_url = access_url+ '/message-'+ message_id+ '.' +'webm';
+    } else {
+      var base_url = location.protocol+ '//'+ location.host+ '/uploads/message-'+ message_id;
+      var mp4_file_url = base_url+ '.' + 'mp4';
+      var webm_file_url = base_url+ '.' +'webm';
+    }
+    
+    var player = videojs(document.querySelector('.video-js'));
+    player.src([{
+      src: mp4_file_url,
+      type: 'video/mp4'
+    }, {
+      src: webm_file_url,
+      type: 'video/webm'
+    }]);
 
     if (res.client_logo) {
       var url = window.location.origin + res.client_logo;

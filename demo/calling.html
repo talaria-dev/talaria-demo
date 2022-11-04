@@ -42,6 +42,7 @@
 var inviter_username;
 var _clientId = null;
 var _clientToken = null;
+var rtc_server;
 
 $("header").css("opacity", 0);
 
@@ -49,7 +50,10 @@ function connect(){
   var url_string = location.href;
   var url = new URL(url_string);
   var token = url.searchParams.get("quick_call_token");
-
+  var url_protocol = window.location.protocol;
+  var url_host = window.location.host;
+  rtc_server = url_protocol + '//' + url_host;
+  tlr.configure({rtc_server:rtc_server});
   tlr.quickLinks.getLinkInfo(token).then(function(info){    
     console.log(info);
     inviter_username = info.username;    
@@ -74,10 +78,6 @@ function connect(){
     $("header").css("opacity", 1);
 
     if (!info.expired) {
-      var url_protocol = window.location.protocol;
-      var url_host = window.location.host;
-      var rtc_server = url_protocol + '//' + url_host;
-
       const tlr_config = {
         room_name: info.room,
         ui_mode: 'fullscreen',
@@ -145,7 +145,7 @@ function connect(){
         }
 
         if (is_inviter_online) {
-          $('#inviter_status').html('is currently online, and you can place the call by clicking the button bellow!');
+          $('#inviter_status').html('is currently online, and you can place the call by clicking the button below!');
           $('#quick_call').removeAttr("disabled");
         } else {
           $('#inviter_status').html('is not online at the moment. Please check back later!');
