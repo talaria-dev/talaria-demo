@@ -88,7 +88,8 @@ INFO
   padding: 7px 0px;
 }
 
-.update-presence-btn {
+.update-presence-btn,
+.quick-connect-btn {
   background-color: #7e57c2;
   color: #fff;
   padding: 10px 15px !important;
