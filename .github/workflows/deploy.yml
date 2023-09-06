@@ -24,10 +24,18 @@ jobs:
       run: |
         aws s3 sync ./demo/ s3://tlr-static/demo/
       
+    - name: Copy popup file to S3 root
+      run: |
+        aws s3 cp ./demo/popup.html s3://tlr-static/popup.html
+
+    - name: Copy test file to S3 root
+      run: |
+        aws s3 cp ./demo/test.html s3://tlr-static/test.html
+        
     - name: invalidate
       uses: chetan/invalidate-cloudfront-action@v2
       env:
-        PATHS: '/demo/*'
+        PATHS: '/popup.html /test.html /demo/*'
         AWS_REGION: 'eu-north-1'
         DISTRIBUTION: 'E1Z0VG7BSJRNKI'
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
