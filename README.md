@@ -17,7 +17,7 @@ It consists of audio/video calling, chat, screen sharing, co-browsing, audio/vid
 
 Talaria works in any modern browser on any desktop or mobile device (iOS, Android, Windows, Mac, Linux). We provide a safe, secure, and private (peer-to-peer, end-to-end encrypted, HIPAA, and GDPR compliant) environment.  It can be easily branded and customized to match your product look and feel.
 
-Talaria is based on open standard [WebRTC](https://webrtc.org) technology and [Open EasyRTC](https://github.com/open-easyrtc/open-easyrtc). Our goal is to enable startups and other businesses to add real-time collaboration features to existing web and mobile apps in one day.
+Talaria is based on open standard [WebRTC](https://webrtc.org) technology and [Open EasyRTC](https://github.com/open-easyrtc/open-easyrtc). Our goal is to enable startups and other businesses to add real-time collaboration features to existing web and mobile apps in couple of days.
 
 To get started with Talaria, contact us via the form on [our website](https://talaria.solutions) or by sending an email to info@talaria.solutions so that we can provide you with credentials for your organization.
 
